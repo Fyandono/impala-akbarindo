@@ -174,7 +174,13 @@ describe('contact', () => {
     email: 'info@example.co.id',
     address: { street: 'Jl. Setrasari 1', city: 'Bandung', region: 'Jabar', postalCode: '40152' },
   };
-  const labels = { phone: 'Phone', mobile: 'Mobile', email: 'Email', instagram: 'Instagram' };
+  const labels = {
+    phone: 'Phone',
+    mobile: 'WhatsApp',
+    email: 'Email',
+    instagram: 'Instagram',
+    whatsappText: 'Halo',
+  };
 
   test('telHref hanya menyisakan angka dan +', () => {
     expect(telHref('+62 (21) 000-0000')).toBe('tel:+62210000000');
@@ -188,7 +194,12 @@ describe('contact', () => {
     const social = [{ name: 'Instagram', url: 'https://www.instagram.com/contoh/' }];
     expect(contactDetails(contact, social, labels)).toEqual([
       { label: 'Phone', value: '+62 22 8202 7114', href: 'tel:+622282027114' },
-      { label: 'Mobile', value: '+62 813 2121 2110 (Agung)', href: 'tel:+6281321212110' },
+      {
+        label: 'WhatsApp',
+        value: '+62 813 2121 2110 (Agung)',
+        href: 'https://wa.me/6281321212110?text=Halo',
+        external: true,
+      },
       { label: 'Email', value: 'info@example.co.id', href: 'mailto:info@example.co.id' },
       {
         label: 'Instagram',

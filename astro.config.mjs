@@ -27,7 +27,8 @@ export default defineConfig({
         // Peta kantor di section Kontak (iframe Google Maps).
         'frame-src https://www.google.com',
         "base-uri 'self'",
-        "form-action 'none'",
+        // Form kontak hanya membuka aplikasi email (mailto:), tanpa server.
+        'form-action mailto:',
         "object-src 'none'",
         'upgrade-insecure-requests',
       ],

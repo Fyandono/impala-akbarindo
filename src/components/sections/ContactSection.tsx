@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react';
 import Button from '../ui/Button';
 import Section from '../ui/Section';
 import SectionHeading from '../ui/SectionHeading';
@@ -28,9 +29,11 @@ export type ContactSectionProps = {
   map: { embedUrl: string; title: string; href: string; label: string };
   /** Teks tersembunyi untuk link yang membuka tab baru. */
   opensInNewTabLabel: string;
+  /** Form kontak (kolom kanan), disiapkan halaman — mis. ContactForm.astro. */
+  children?: ReactNode;
 };
 
-/** Kontak kantor: alamat, telepon/email/sosial, dan peta tertanam. Tanpa form. */
+/** Kontak kantor: alamat, telepon/WhatsApp/email/sosial, peta tertanam, dan form (children). */
 export default function ContactSection({
   id,
   titleId = `${id ?? 'contact'}-title`,
@@ -44,6 +47,7 @@ export default function ContactSection({
   details,
   map,
   opensInNewTabLabel,
+  children,
 }: ContactSectionProps) {
   return (
     <Section
@@ -87,30 +91,32 @@ export default function ContactSection({
             ))}
           </dl>
         </div>
+
+        <div className="mt-10" data-reveal="scale">
+          <div className="aspect-landscape overflow-hidden rounded-card border border-neutral-200 bg-neutral-100">
+            <iframe
+              src={map.embedUrl}
+              title={map.title}
+              loading="lazy"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowFullScreen
+              className="size-full border-0"
+            />
+          </div>
+          <Button
+            href={map.href}
+            variant="secondary"
+            className="mt-6"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {map.label}
+            <span className="sr-only">{opensInNewTabLabel}</span>
+          </Button>
+        </div>
       </div>
 
-      <div className="lg:col-span-6 lg:col-start-7 lg:pt-16" data-reveal="scale">
-        <div className="aspect-square overflow-hidden rounded-card border border-neutral-200 bg-neutral-100 sm:aspect-landscape lg:aspect-square">
-          <iframe
-            src={map.embedUrl}
-            title={map.title}
-            loading="lazy"
-            referrerPolicy="strict-origin-when-cross-origin"
-            allowFullScreen
-            className="size-full border-0"
-          />
-        </div>
-        <Button
-          href={map.href}
-          variant="secondary"
-          className="mt-6"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          {map.label}
-          <span className="sr-only">{opensInNewTabLabel}</span>
-        </Button>
-      </div>
+      {children && <div className="lg:col-span-6 lg:col-start-7 lg:pt-16">{children}</div>}
     </Section>
   );
 }

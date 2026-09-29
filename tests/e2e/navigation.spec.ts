@@ -51,3 +51,21 @@ test('konten tetap tampil saat animasi dimatikan (reduced motion)', async ({ bro
   expect(hidden).toBe(0);
   await context.close();
 });
+
+test('kontak: nomor seluler ke WhatsApp, form berlabel dan memvalidasi isian wajib', async ({
+  page,
+}) => {
+  await page.goto('/#contact');
+  await expect(page.locator('#contact a[href^="https://wa.me/62"]')).toHaveCount(1);
+
+  const form = page.locator('[data-contact-form]');
+  await expect(form).toHaveAttribute('data-email', 'kantor.impala@gmail.com');
+  await expect(form.getByLabel(/Nama lengkap/)).toBeVisible();
+  await expect(form.getByLabel(/Instansi/)).toBeVisible();
+  await expect(form.getByLabel(/Layanan yang dibutuhkan/).locator('option')).not.toHaveCount(0);
+
+  // Isian wajib kosong → browser menahan pengiriman, halaman tidak berpindah.
+  await form.getByRole('button', { name: /Kirim via email/ }).click();
+  await expect(form.getByLabel(/Nama lengkap/)).toBeFocused();
+  await expect(page).toHaveURL(/#contact$/);
+});

@@ -12,7 +12,7 @@ Kebijakan ini menjelaskan bagaimana PT Impala Akbarindo ("kami") memproses data 
 
 ## 2. Data yang kami proses
 
-Situs ini **tidak** memiliki formulir, akun, atau fitur login, sehingga kami tidak meminta data pribadi seperti nama atau email secara langsung.
+Situs ini **tidak** memiliki akun atau fitur login, dan tidak menyimpan data apa pun di server. Formulir permintaan penawaran di section Kontak hanya menyusun pesan lalu membuka aplikasi email Anda; data yang Anda isi baru terkirim kepada kami bila Anda mengirim email tersebut dari aplikasi email Anda sendiri. Begitu pula tautan WhatsApp hanya membuka aplikasi WhatsApp Anda.
 
 Jika Anda menyetujui cookie analitik, kami menggunakan Google Analytics untuk mengumpulkan data penggunaan secara agregat, seperti halaman yang dikunjungi, perkiraan lokasi (tingkat kota/negara), jenis perangkat, dan peramban.
 

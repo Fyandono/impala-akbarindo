@@ -1,7 +1,9 @@
+import { getCollection } from 'astro:content';
 import type { ContactDetail, ContactSectionProps } from '../../components/sections/ContactSection';
 import { site } from '../../config/site';
 import { dict } from '../../i18n';
-import type { SectionData } from './shared';
+import { whatsappHref, type MailTemplate } from '../contact-form';
+import { byOrder, type SectionData } from './shared';
 
 type Contact = {
   phone: string;
@@ -10,7 +12,14 @@ type Contact = {
   address: { street: string; city: string; region: string; postalCode: string };
 };
 type Social = { name: string; url: string };
-type Labels = { phone: string; mobile: string; email: string; instagram: string };
+type Labels = {
+  phone: string;
+  mobile: string;
+  email: string;
+  instagram: string;
+  /** Pesan pembuka WhatsApp untuk nomor seluler. */
+  whatsappText: string;
+};
 
 /** `+62 21 000 0000` → `tel:+62210000000`. */
 export const telHref = (phone: string) => `tel:${phone.replace(/[^\d+]/g, '')}`;
@@ -28,7 +37,8 @@ export function contactDetails(contact: Contact, social: readonly Social[], labe
     details.push({
       label: labels.mobile,
       value: name ? `${number} (${name})` : number,
-      href: telHref(number),
+      href: whatsappHref(number, labels.whatsappText),
+      external: true,
     });
   }
   details.push({ label: labels.email, value: contact.email, href: `mailto:${contact.email}` });
@@ -48,8 +58,20 @@ export function addressLines({ address }: Contact): string[] {
   return [address.street, `${address.city}, ${address.region} ${address.postalCode}`];
 }
 
-export async function loadContact(): Promise<SectionData<ContactSectionProps>> {
+/** Data form kontak (dirender ContactForm.astro; email disusun di browser, tanpa server). */
+export type ContactFormData = {
+  email: string;
+  strings: Omit<typeof dict.contact.form, 'mail'>;
+  mail: MailTemplate;
+  services: string[];
+};
+
+export async function loadContact(): Promise<
+  SectionData<ContactSectionProps> & { form: ContactFormData }
+> {
   const { contact } = dict;
+  const { mail, ...strings } = contact.form;
+  const services = (await getCollection('business')).sort(byOrder).map((s) => s.data.title);
   return {
     eyebrow: dict.nav.contact,
     title: contact.title,
@@ -65,5 +87,11 @@ export async function loadContact(): Promise<SectionData<ContactSectionProps>> {
       label: contact.openMaps,
     },
     opensInNewTabLabel: dict.common.opensInNewTab,
+    form: {
+      email: site.contact.email,
+      strings,
+      mail,
+      services: [...services, strings.serviceOther],
+    },
   };
 }

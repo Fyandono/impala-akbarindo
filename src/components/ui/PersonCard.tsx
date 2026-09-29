@@ -35,7 +35,9 @@ export default function PersonCard({
         </div>
       </div>
       <Heading className="mt-5 text-body-lg">{name}</Heading>
-      <p className="mt-1 text-small font-medium text-primary-500">{position}</p>
+      <p className="mt-2 border-t border-neutral-200 pt-2 text-small font-semibold tracking-wide text-accent-700 uppercase">
+        {position}
+      </p>
       {bio && (
         <details className="group mt-3">
           <summary className="inline-flex cursor-pointer items-center gap-1 text-small font-semibold text-primary-700">

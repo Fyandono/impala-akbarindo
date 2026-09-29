@@ -86,10 +86,39 @@
     "office": "Kantor",
     "phone": "Telepon",
     "email": "Email",
-    "mobile": "Seluler",
+    "mobile": "WhatsApp",
     "instagram": "Instagram",
     "mapTitle": "Peta lokasi kantor PT Impala Akbarindo",
-    "openMaps": "Buka di Google Maps"
+    "openMaps": "Buka di Google Maps",
+    "whatsappText": "Halo PT Impala Akbarindo, saya ingin berkonsultasi mengenai layanan outsourcing.",
+    "form": {
+      "title": "Formulir Permintaan Penawaran",
+      "lead": "Isi formulir di bawah; tombol kirim akan membuka aplikasi email Anda dengan pesan yang sudah tersusun.",
+      "name": "Nama lengkap & jabatan",
+      "namePlaceholder": "Contoh: Bpk. Bambang (PPK / Bagian Umum)",
+      "organization": "Instansi / nama perusahaan",
+      "organizationPlaceholder": "Contoh: Dinas / Badan / PT …",
+      "service": "Layanan yang dibutuhkan",
+      "serviceOther": "Lainnya / konsultasi umum",
+      "message": "Catatan / estimasi kebutuhan personel",
+      "messagePlaceholder": "Jumlah tenaga kerja, lokasi, atau periode kontrak …",
+      "required": "wajib",
+      "submit": "Kirim via email",
+      "note": "Data tidak disimpan oleh situs ini — pesan dikirim langsung dari aplikasi email Anda.",
+      "mail": {
+        "subject": "Permintaan Penawaran - {sender}",
+        "greeting": "Halo PT Impala Akbarindo,",
+        "intro": "Saya ingin berkonsultasi mengenai layanan outsourcing:",
+        "closing": "Mohon informasi dan tindak lanjutnya. Terima kasih.",
+        "labels": {
+          "name": "Nama",
+          "organization": "Instansi/Perusahaan",
+          "service": "Kebutuhan layanan",
+          "message": "Catatan"
+        },
+        "fallbackSender": "Calon Mitra"
+      }
+    }
   },
   "notFound": {
     "title": "Halaman tidak ditemukan",

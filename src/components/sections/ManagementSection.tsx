@@ -1,5 +1,4 @@
 import { cx } from '../cx';
-import Eyebrow from '../ui/Eyebrow';
 import PersonCard, { type PersonCardProps } from '../ui/PersonCard';
 import Section from '../ui/Section';
 import SectionHeading from '../ui/SectionHeading';
@@ -54,22 +53,21 @@ export default function ManagementSection({
   return (
     <Section id={id} labelledBy={titleId}>
       <SectionHeading id={titleId} index={index} eyebrow={eyebrow} title={title} />
-      <div className="mt-16 grid gap-x-6 gap-y-16 lg:grid-cols-5">
+      <div className="mt-16 grid gap-x-6 gap-y-20 sm:gap-x-8 lg:grid-cols-5 lg:gap-x-10 lg:gap-y-24">
         {groups.map((group) => {
           const columns = Math.min(group.people.length, 5) as 1 | 2 | 3 | 4 | 5;
           return (
             <div key={group.title} className={spans[columns]}>
-              <Eyebrow
-                as="h3"
-                tone="strong"
-                rule={false}
-                className="border-t border-primary-900 pt-5"
+              <h3
+                className="flex items-center gap-3 border-t-2 border-primary-900 pt-5 font-serif text-title font-normal text-primary-900"
+                data-reveal="fade"
               >
+                <span className="h-6 w-1 shrink-0 bg-accent-700" aria-hidden="true" />
                 {group.title}
-              </Eyebrow>
+              </h3>
               <ul
                 className={cx(
-                  'mt-10 grid grid-cols-2 gap-x-6 gap-y-12 sm:grid-cols-3',
+                  'mt-10 grid grid-cols-2 gap-x-6 gap-y-14 sm:grid-cols-3 sm:gap-x-8 lg:gap-x-10 lg:gap-y-16',
                   innerColumns[columns],
                 )}
                 data-reveal-group

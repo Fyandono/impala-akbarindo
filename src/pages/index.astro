@@ -1,6 +1,7 @@
 ---
 import AboutIntro from '../components/sections/AboutIntro.tsx';
 import BusinessSection from '../components/sections/BusinessSection.tsx';
+import ContactForm from '../components/sections/ContactForm.astro';
 import ContactSection from '../components/sections/ContactSection.tsx';
 import ExperienceSection from '../components/sections/ExperienceSection.tsx';
 import GallerySection from '../components/sections/GallerySection.tsx';
@@ -58,6 +59,7 @@ const [
   site.features.news ? loadNews() : undefined,
   loadContact(),
 ]);
+const { form: contactForm, ...contactSection } = contact;
 const heroMeta = [
   ...(site.foundingYear ? [`${home.heroEstablished} ${site.foundingYear}`] : []),
   home.heroLocation,
@@ -108,5 +110,7 @@ const heroMeta = [
 
   {news && <NewsSection id="news" index={sectionIndex('news')} {...news} />}
 
-  <ContactSection id="contact" index={sectionIndex('contact')} {...contact} />
+  <ContactSection id="contact" index={sectionIndex('contact')} {...contactSection}>
+    <ContactForm {...contactForm} />
+  </ContactSection>
 </BaseLayout>
