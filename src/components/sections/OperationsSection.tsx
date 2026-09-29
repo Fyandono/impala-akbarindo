@@ -40,7 +40,7 @@ export default function OperationsSection({
         {tracks.map((track) => (
           <article
             key={track.title}
-            className="rounded-card border border-neutral-200 p-6 sm:p-10"
+            className="lift rounded-card border border-neutral-200 p-6 sm:p-10"
             data-reveal
           >
             <h3 className="font-serif text-title-lg font-normal">{track.title}</h3>
@@ -60,9 +60,16 @@ export default function OperationsSection({
             <Eyebrow as="p" tone="light" className="mt-10">
               {routinesTitle}
             </Eyebrow>
-            <ol className="mt-4 divide-y divide-neutral-200 border-y border-neutral-200">
+            <ol
+              className="mt-4 divide-y divide-neutral-200 border-y border-neutral-200"
+              data-reveal-group
+            >
               {track.routines.map((routine) => (
-                <li key={routine.frequency} className="grid gap-1 py-4 sm:grid-cols-3 sm:gap-6">
+                <li
+                  key={routine.frequency}
+                  className="grid gap-1 py-4 sm:grid-cols-3 sm:gap-6"
+                  data-reveal="left"
+                >
                   <p className="text-small font-semibold text-accent-700">{routine.frequency}</p>
                   <p className="leading-relaxed text-neutral-600 sm:col-span-2">
                     {routine.description}

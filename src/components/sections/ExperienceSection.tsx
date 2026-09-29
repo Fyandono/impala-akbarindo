@@ -47,22 +47,33 @@ export default function ExperienceSection({
     <Section id={id} tone="muted" labelledBy={titleId}>
       <SectionHeading id={titleId} index={index} eyebrow={eyebrow} title={title} lead={lead} />
 
-      <div className="mt-16" data-reveal>
+      <div className="mt-16">
         <div
           className="hidden grid-cols-12 gap-6 border-b border-primary-900 pb-4 text-eyebrow font-semibold text-primary-900 uppercase md:grid"
           aria-hidden="true"
+          data-reveal="fade"
         >
           <span className={showValues ? 'col-span-6' : 'col-span-8'}>{labels.client}</span>
           <span className={showValues ? 'col-span-3' : 'col-span-4'}>{labels.service}</span>
           {showValues && <span className="col-span-3 text-right">{labels.value}</span>}
         </div>
-        <ol className="divide-y divide-neutral-200 border-b border-neutral-200">
+        <ol className="divide-y divide-neutral-200 border-b border-neutral-200" data-reveal-group>
           {projects.map((project) => (
             <li
               key={`${project.client}-${project.service}`}
-              className="grid gap-2 py-6 md:grid-cols-12 md:items-baseline md:gap-6"
+              className="group relative grid gap-2 py-6 md:grid-cols-12 md:items-baseline md:gap-6"
+              data-reveal="left"
             >
-              <h3 className={cx('text-body-lg', showValues ? 'md:col-span-6' : 'md:col-span-8')}>
+              <span
+                className="absolute inset-y-0 -left-4 w-0.5 origin-top scale-y-0 bg-accent-700 transition-transform duration-500 group-hover:scale-y-100"
+                aria-hidden="true"
+              />
+              <h3
+                className={cx(
+                  'text-body-lg transition-transform duration-500 group-hover:translate-x-2',
+                  showValues ? 'md:col-span-6' : 'md:col-span-8',
+                )}
+              >
                 {project.client}
               </h3>
               <p
@@ -98,16 +109,30 @@ export default function ExperienceSection({
           {othersTitle && (
             <h3 className="text-eyebrow font-semibold text-primary-500 uppercase">{othersTitle}</h3>
           )}
-          <ul className="mt-5 flex flex-wrap gap-3">
-            {others.map((name) => (
-              <li
-                key={name}
-                className="rounded-card border border-neutral-300 bg-white px-4 py-2 text-small text-primary-700"
-              >
-                {name}
-              </li>
-            ))}
-          </ul>
+          {/* Marquee: daftar asli + duplikat (aria-hidden) agar gerakan tanpa jeda. */}
+          <div className="marquee mt-5 overflow-hidden mask-fade-x">
+            <div className="marquee-track flex w-max">
+              {[false, true].map((clone) => (
+                <ul
+                  key={String(clone)}
+                  className={cx(
+                    'flex shrink-0 gap-3 pr-3 motion-reduce:flex-wrap',
+                    clone && 'marquee-clone',
+                  )}
+                  aria-hidden={clone || undefined}
+                >
+                  {others.map((name) => (
+                    <li
+                      key={name}
+                      className="rounded-card border border-neutral-300 bg-white px-4 py-2 text-small whitespace-nowrap text-primary-700 motion-reduce:whitespace-normal"
+                    >
+                      {name}
+                    </li>
+                  ))}
+                </ul>
+              ))}
+            </div>
+          </div>
         </div>
       )}
     </Section>

@@ -48,7 +48,7 @@ export default function Eyebrow({
           {index}
         </span>
       )}
-      {rule && <span className="h-px w-10 bg-current opacity-50" aria-hidden="true" />}
+      {rule && <span className="reveal-rule h-px w-10 bg-current opacity-50" aria-hidden="true" />}
       {children}
     </Tag>
   );

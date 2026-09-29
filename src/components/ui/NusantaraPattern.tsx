@@ -42,7 +42,7 @@ export default function NusantaraPattern({
           <path d="M0.5 0V32" fill="none" stroke="currentColor" strokeWidth="1" />
         </pattern>
       </defs>
-      <rect width="100%" height="100%" fill={`url(#${id})`} />
+      <rect className="pattern-drift" width="120%" height="100%" fill={`url(#${id})`} />
     </svg>
   );
 }

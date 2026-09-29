@@ -28,9 +28,19 @@ export default function ValuesGrid({
         className="mt-12 grid gap-px overflow-hidden rounded-card border border-neutral-200 bg-neutral-200 sm:grid-cols-2 lg:grid-cols-3"
         data-reveal-group
       >
-        {values.map((value) => (
-          <li key={value.title} className="bg-white p-8" data-reveal>
-            <h3 className="text-title-sm">{value.title}</h3>
+        {values.map((value, i) => (
+          <li key={value.title} className="group relative bg-white p-8" data-reveal>
+            <span
+              className="absolute inset-x-0 top-0 h-0.5 origin-left scale-x-0 bg-accent-700 transition-transform duration-700 group-hover:scale-x-100"
+              aria-hidden="true"
+            />
+            <p
+              className="text-eyebrow font-semibold text-accent-700 tabular-nums"
+              aria-hidden="true"
+            >
+              {String(i + 1).padStart(2, '0')}
+            </p>
+            <h3 className="mt-4 text-title-sm">{value.title}</h3>
             <p className="mt-3 leading-relaxed text-neutral-600">{value.description}</p>
           </li>
         ))}

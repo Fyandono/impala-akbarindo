@@ -1,3 +1,4 @@
+import { Fragment } from 'react';
 import BrandMark from '../ui/BrandMark';
 import Button from '../ui/Button';
 import ColumnLines from '../ui/ColumnLines';
@@ -22,6 +23,7 @@ export type HeroProps = {
 /**
  * Hero homepage layar penuh, gaya arsitektural: garis kolom, judul display besar & ringan,
  * garis rambut pemisah lead dan aksi. Satu per halaman — berisi `<h1>`.
+ * Animasi masuk murni CSS (global.css: hero-word, hero-enter, hero-mark) — tidak menunggu JS.
  */
 export default function Hero({
   eyebrow,
@@ -32,6 +34,7 @@ export default function Hero({
   meta = [],
   scrollLabel,
 }: HeroProps) {
+  const words = title.split(' ');
   return (
     <>
       <section className="relative isolate flex min-h-svh flex-col overflow-hidden bg-primary-950 text-white">
@@ -42,16 +45,16 @@ export default function Hero({
             data-parallax
             className="absolute -top-1/3 -right-1/4 aspect-square w-3/4 rounded-full bg-accent-700/20 blur-3xl"
           />
-          <BrandMark className="absolute -right-24 -bottom-8 hidden h-5/6 w-auto text-white/4 md:block" />
+          <div data-parallax="-12" className="absolute inset-0 hidden md:block">
+            <BrandMark className="hero-mark absolute -right-24 -bottom-8 h-5/6 w-auto text-white/5" />
+          </div>
+          <div className="hero-sweep absolute inset-y-0 left-0 w-1/4 bg-linear-to-r from-transparent via-accent-500/10 to-transparent" />
         </div>
         <NusantaraPattern fade="right" />
         <ColumnLines />
 
         <Container className="flex flex-1 flex-col pt-32 pb-10 md:pt-36">
-          <div
-            className="flex items-center justify-between gap-6 text-eyebrow font-semibold uppercase"
-            data-reveal
-          >
+          <div className="hero-enter hero-enter-1 flex items-center justify-between gap-6 text-eyebrow font-semibold uppercase">
             <Eyebrow tone="dark">{eyebrow}</Eyebrow>
             {meta.length > 0 && (
               <ul className="hidden gap-8 text-primary-200 sm:flex">
@@ -62,16 +65,26 @@ export default function Hero({
             )}
           </div>
 
-          <div className="flex flex-1 flex-col justify-end pt-20" data-reveal-group>
-            <h1 className="max-w-6xl text-display font-light text-white" data-reveal>
-              {title}
+          <div className="flex flex-1 flex-col justify-end pt-20">
+            <h1 className="max-w-6xl text-display font-light text-white">
+              {words.map((word, i) => (
+                <Fragment key={i}>
+                  {i > 0 && ' '}
+                  <span className="hero-word-mask">
+                    <span className="hero-word">{word}</span>
+                  </span>
+                </Fragment>
+              ))}
             </h1>
-            <div
-              className="mt-14 grid gap-10 border-t border-white/15 pt-10 lg:grid-cols-12"
-              data-reveal
-            >
-              <p className="text-lead text-primary-200 lg:col-span-6">{lead}</p>
-              <div className="flex flex-wrap items-start gap-4 lg:col-span-5 lg:col-start-8 lg:justify-end">
+            <div className="relative mt-14 grid gap-10 pt-10 lg:grid-cols-12">
+              <span
+                className="hero-rule absolute inset-x-0 top-0 h-px bg-white/15"
+                aria-hidden="true"
+              />
+              <p className="hero-enter hero-enter-2 text-lead text-primary-200 lg:col-span-6">
+                {lead}
+              </p>
+              <div className="hero-enter hero-enter-3 flex flex-wrap items-start gap-4 lg:col-span-5 lg:col-start-8 lg:justify-end">
                 <Button href={primary.href} variant="accent">
                   {primary.label}
                 </Button>
@@ -86,9 +99,11 @@ export default function Hero({
 
           <a
             href="#content-start"
-            className="mt-16 hidden items-center gap-4 self-start text-eyebrow font-semibold text-white/60 uppercase transition-colors hover:text-white md:flex"
+            className="hero-enter hero-enter-4 group mt-16 hidden items-center gap-4 self-start text-eyebrow font-semibold text-white/60 uppercase transition-colors hover:text-white md:flex"
           >
-            <span className="h-px w-10 bg-current" aria-hidden="true" />
+            <span className="relative h-px w-10 overflow-hidden bg-white/25" aria-hidden="true">
+              <span className="scroll-cue absolute inset-0 bg-current" />
+            </span>
             {scrollLabel}
           </a>
         </Container>

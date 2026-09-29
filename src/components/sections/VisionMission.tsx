@@ -39,9 +39,9 @@ export default function VisionMission({
         <Eyebrow as="h2" tone="dark">
           {missionTitle}
         </Eyebrow>
-        <ol className="mt-6 space-y-6">
+        <ol className="mt-6 space-y-6" data-reveal-group>
           {mission.map((item, i) => (
-            <li key={item} className="flex gap-5 border-t border-white/15 pt-6">
+            <li key={item} className="flex gap-5 border-t border-white/15 pt-6" data-reveal="left">
               <span className="text-small font-semibold text-accent-400" aria-hidden="true">
                 {String(i + 1).padStart(2, '0')}
               </span>

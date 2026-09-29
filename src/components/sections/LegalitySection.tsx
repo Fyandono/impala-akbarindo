@@ -57,8 +57,8 @@ export default function LegalitySection({
         {certifications.map((item) => (
           <li
             key={item.title}
-            className="flex flex-col rounded-card border border-white/15 bg-white/5 p-6"
-            data-reveal
+            className="lift flex flex-col rounded-card border border-white/15 bg-white/5 p-6"
+            data-reveal="scale"
           >
             {item.code && (
               <p className="text-small font-semibold tracking-wide text-accent-400">{item.code}</p>
@@ -74,7 +74,7 @@ export default function LegalitySection({
       </Eyebrow>
       <ul className="mt-8 grid gap-x-10 gap-y-8 md:grid-cols-2 lg:grid-cols-3" data-reveal-group>
         {permits.map((item) => (
-          <li key={item.title} className="border-t border-white/15 pt-5" data-reveal>
+          <li key={item.title} className="border-t border-white/15 pt-5" data-reveal="left">
             <h4 className="text-body-lg text-white">{item.title}</h4>
             <p className="mt-2 text-small leading-relaxed text-primary-200">{item.description}</p>
           </li>

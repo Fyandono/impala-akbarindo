@@ -34,12 +34,14 @@ export default function GallerySection({
           <li key={item.caption} data-reveal>
             <figure className="group">
               <div className="aspect-landscape overflow-hidden rounded-card bg-neutral-100">
-                <img
-                  {...item.image}
-                  loading="lazy"
-                  decoding="async"
-                  className="size-full object-cover transition-transform duration-1000 group-hover:scale-105"
-                />
+                <div className="reveal-media size-full">
+                  <img
+                    {...item.image}
+                    loading="lazy"
+                    decoding="async"
+                    className="size-full object-cover transition-transform duration-1000 group-hover:scale-105"
+                  />
+                </div>
               </div>
               <figcaption className="mt-4 border-t border-neutral-200 pt-4 text-small text-neutral-600">
                 {item.caption}

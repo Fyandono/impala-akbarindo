@@ -89,7 +89,7 @@ export default function ContactSection({
         </div>
       </div>
 
-      <div className="lg:col-span-6 lg:col-start-7 lg:pt-16" data-reveal>
+      <div className="lg:col-span-6 lg:col-start-7 lg:pt-16" data-reveal="scale">
         <div className="aspect-square overflow-hidden rounded-card border border-neutral-200 bg-neutral-100 sm:aspect-landscape lg:aspect-square">
           <iframe
             src={map.embedUrl}

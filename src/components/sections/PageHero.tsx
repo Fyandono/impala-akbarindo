@@ -23,7 +23,7 @@ export default function PageHero({ title, lead, breadcrumbs, breadcrumbLabel }: 
       <NusantaraPattern fade="right" />
       <ColumnLines />
       <Container className="pt-40 pb-20 md:pt-52 md:pb-28">
-        <nav aria-label={breadcrumbLabel} data-reveal>
+        <nav aria-label={breadcrumbLabel} className="hero-enter hero-enter-1">
           <ol className="flex flex-wrap items-center gap-3 text-eyebrow font-semibold text-primary-200 uppercase">
             {breadcrumbs.map((crumb, i) => (
               <li key={crumb.path} className="flex items-center gap-2">
@@ -45,14 +45,11 @@ export default function PageHero({ title, lead, breadcrumbs, breadcrumbLabel }: 
             ))}
           </ol>
         </nav>
-        <h1 className="mt-8 max-w-5xl text-display font-light text-white" data-reveal>
+        <h1 className="hero-enter hero-enter-2 mt-8 max-w-5xl text-display font-light text-white">
           {title}
         </h1>
         {lead && (
-          <p
-            className="mt-10 max-w-2xl border-t border-white/15 pt-8 text-lead text-primary-200"
-            data-reveal
-          >
+          <p className="hero-enter hero-enter-3 mt-10 max-w-2xl border-t border-white/15 pt-8 text-lead text-primary-200">
             {lead}
           </p>
         )}

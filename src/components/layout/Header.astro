@@ -8,7 +8,7 @@ import SectionNav from './SectionNav.astro';
 
 <header
   data-site-header
-  class="group data-scrolled:text-primary-900 fixed inset-x-0 top-0 z-50 text-white transition duration-300 data-scrolled:bg-white/95 data-scrolled:shadow-hairline data-scrolled:backdrop-blur"
+  class="header-enter group data-scrolled:text-primary-900 fixed inset-x-0 top-0 z-50 text-white transition duration-300 data-scrolled:bg-white/95 data-scrolled:shadow-hairline data-scrolled:backdrop-blur"
 >
   <Container class="flex h-header items-center justify-between gap-6">
     <a href="/" class="shrink-0" aria-label={dict.nav.home}>
@@ -32,6 +32,10 @@ import SectionNav from './SectionNav.astro';
       </button>
     </div>
   </Container>
+  <div
+    class="scroll-progress bg-accent-600 absolute inset-x-0 bottom-0 h-0.5"
+    aria-hidden="true"
+  ></div>
 </header>
 
 <dialog

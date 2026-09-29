@@ -23,9 +23,16 @@ export default function PersonCard({
   as: Heading = 'h3',
 }: PersonCardProps) {
   return (
-    <article data-reveal>
+    <article className="group" data-reveal>
       <div className="aspect-portrait overflow-hidden rounded-card bg-neutral-100">
-        <img {...photo} loading="lazy" decoding="async" className="size-full object-cover" />
+        <div className="reveal-media size-full">
+          <img
+            {...photo}
+            loading="lazy"
+            decoding="async"
+            className="size-full object-cover transition-transform duration-1000 group-hover:scale-105"
+          />
+        </div>
       </div>
       <Heading className="mt-5 text-body-lg">{name}</Heading>
       <p className="mt-1 text-small font-medium text-primary-500">{position}</p>

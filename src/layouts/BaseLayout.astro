@@ -55,14 +55,14 @@ const legalLinks = legalNav.map((item) => ({ label: dict.nav[item.key], href: it
     />
     <!--
       Menandai JS aktif agar elemen [data-reveal] disembunyikan sebelum dianimasikan.
-      Jika modul animasi tidak termuat dalam 3 detik, konten ditampilkan tanpa animasi.
+      Jika script reveal tidak berjalan dalam 1,5 detik, konten ditampilkan tanpa animasi.
     -->
     <script is:inline>
       const root = document.documentElement;
       root.classList.add('js');
       setTimeout(() => {
         if (!root.classList.contains('anim-ready')) root.classList.remove('js');
-      }, 3000);
+      }, 1500);
     </script>
   </head>
   <body>
@@ -92,6 +92,9 @@ const legalLinks = legalNav.map((item) => ({ label: dict.nav[item.key], href: it
       cookieSettingsLabel={measurementId ? dict.common.cookieSettings : undefined}
     />
     {measurementId && <ConsentManager measurementId={measurementId} />}
+    <script>
+      import '../scripts/reveal';
+    </script>
     <script>
       import '../scripts/animations';
     </script>

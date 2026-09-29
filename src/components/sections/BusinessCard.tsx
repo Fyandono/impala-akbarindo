@@ -14,16 +14,22 @@ export type BusinessCardProps = {
 export default function BusinessCard({ title, summary, image, index, href }: BusinessCardProps) {
   const Tag = href ? 'a' : 'article';
   return (
-    <Tag href={href} className="group flex flex-col" data-reveal>
+    <Tag href={href} className="group lift flex flex-col" data-reveal>
       <div className="aspect-landscape overflow-hidden rounded-card bg-neutral-100 sm:aspect-card">
-        <img
-          {...image}
-          loading="lazy"
-          decoding="async"
-          className="size-full object-cover transition-transform duration-1000 group-hover:scale-105"
-        />
+        <div className="reveal-media size-full">
+          <img
+            {...image}
+            loading="lazy"
+            decoding="async"
+            className="size-full object-cover transition-transform duration-1000 group-hover:scale-105"
+          />
+        </div>
       </div>
-      <div className="mt-6 flex items-center justify-between border-t border-neutral-200 pt-5">
+      <div className="relative mt-6 flex items-center justify-between border-t border-neutral-200 pt-5">
+        <span
+          className="absolute inset-x-0 -top-px h-px origin-left scale-x-0 bg-accent-700 transition-transform duration-700 group-hover:scale-x-100"
+          aria-hidden="true"
+        />
         <p className="text-eyebrow font-semibold text-accent-700 tabular-nums">
           {String(index + 1).padStart(2, '0')}
         </p>

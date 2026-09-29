@@ -3,22 +3,10 @@ import { animate, inView, scroll } from 'motion';
 const root = document.documentElement;
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-/** Reveal saat elemen masuk viewport. Anak dari [data-reveal-group] muncul bergiliran. */
-function initReveal() {
-  document.querySelectorAll<HTMLElement>('[data-reveal-group]').forEach((group) => {
-    group.querySelectorAll<HTMLElement>('[data-reveal]').forEach((el, i) => {
-      el.style.setProperty('--reveal-delay', `${Math.min(i * 90, 450)}ms`);
-    });
-  });
-
-  inView(
-    '[data-reveal]',
-    (el) => {
-      el.classList.add('is-revealed');
-    },
-    { margin: '0px 0px -10% 0px' },
-  );
-}
+/*
+ * Animasi yang butuh library `motion`: counter angka dan parallax.
+ * Reveal on scroll ada di reveal.ts (tanpa library) agar teks tidak menunggu modul ini dimuat.
+ */
 
 /** Angka berhitung naik: <span data-counter="50">50</span> */
 function initCounters() {
@@ -36,20 +24,22 @@ function initCounters() {
   });
 }
 
-/** Parallax halus pada latar hero: <div data-parallax> di dalam section. */
+/**
+ * Parallax halus: <div data-parallax> bergeser 10% (atau nilai `data-parallax`, mis. "-15")
+ * selama section induknya di-scroll.
+ */
 function initParallax() {
   document.querySelectorAll<HTMLElement>('[data-parallax]').forEach((el) => {
     const section = el.closest('section') ?? el;
-    scroll(animate(el, { transform: ['translateY(0%)', 'translateY(10%)'] }, { ease: 'linear' }), {
-      target: section,
-      offset: ['start start', 'end start'],
-    });
+    const shift = Number(el.dataset.parallax) || 10;
+    scroll(
+      animate(el, { transform: ['translateY(0%)', `translateY(${shift}%)`] }, { ease: 'linear' }),
+      { target: section, offset: ['start start', 'end start'] },
+    );
   });
 }
 
 if (!reducedMotion) {
-  initReveal();
   initCounters();
   initParallax();
 }
-root.classList.add('anim-ready');
