@@ -26,9 +26,9 @@ export type ExperienceSectionProps = {
   projects: ProjectRow[];
   /** Total nilai kontrak yang sudah diformat. Kosong = baris total disembunyikan. */
   total?: string;
-  /** Klien lain tanpa rincian kontrak. */
+  /** Klien lain tanpa rincian kontrak (logo opsional). */
   othersTitle?: string;
-  others?: string[];
+  others?: { name: string; logo?: ResponsiveImage }[];
 };
 
 /** Rekam jejak kontrak: logo & nama pemberi kerja, jenis pekerjaan, (opsional) nilai + total. */
@@ -120,12 +120,21 @@ export default function ExperienceSection({
             <h3 className="text-eyebrow font-semibold text-primary-500 uppercase">{othersTitle}</h3>
           )}
           <ul className="mt-5 flex flex-wrap gap-3">
-            {others.map((name) => (
+            {others.map((client) => (
               <li
-                key={name}
-                className="rounded-card border border-neutral-300 bg-white px-4 py-2 text-small text-primary-700"
+                key={client.name}
+                className="flex min-h-14 items-center gap-3 rounded-card border border-neutral-300 bg-white px-4 py-2 text-small text-primary-700"
               >
-                {name}
+                {client.logo && (
+                  <img
+                    {...client.logo}
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                    className="max-h-9 w-auto max-w-20 object-contain"
+                  />
+                )}
+                {client.name}
               </li>
             ))}
           </ul>

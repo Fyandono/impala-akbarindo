@@ -4,9 +4,12 @@ import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
 
 import react from '@astrojs/react';
+import { loadEnv } from 'vite';
 
-// Domain production klien. Dipakai untuk canonical, hreflang, sitemap, dan Open Graph.
-const SITE_URL = process.env.SITE_URL ?? 'https://www.example.co.id';
+// Domain production. Dipakai untuk canonical, sitemap, dan Open Graph.
+// Urutan: variabel environment (CI) → file .env lokal → domain bawaan Firebase Hosting.
+const env = loadEnv(process.env.NODE_ENV ?? 'production', process.cwd(), '');
+const SITE_URL = process.env.SITE_URL || env.SITE_URL || 'https://impala-akbarindo.web.app';
 
 export default defineConfig({
   site: SITE_URL,

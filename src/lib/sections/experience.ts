@@ -48,8 +48,8 @@ export function mapProjects(
 export const totalValue = (entries: Entry[]) =>
   entries.reduce((sum, { data }) => sum + data.value, 0);
 
-/** Nama klien yang tidak punya baris kontrak (untuk daftar "Juga melayani"), urut `order`. */
-export function otherClients(
+/** id klien yang tidak punya baris kontrak (untuk daftar "Juga melayani"), urut `order`. */
+export function otherClientIds(
   clients: Pick<CollectionEntry<'clients'>, 'id' | 'data'>[],
   projects: Entry[],
 ): string[] {
@@ -57,7 +57,7 @@ export function otherClients(
   return [...clients]
     .sort(byOrder)
     .filter((client) => !listed.has(client.id))
-    .map((client) => client.data.name);
+    .map((client) => client.id);
 }
 
 export async function loadExperience(): Promise<SectionData<ExperienceSectionProps>> {
@@ -94,6 +94,6 @@ export async function loadExperience(): Promise<SectionData<ExperienceSectionPro
     projects: mapProjects(entries, clients, showValues),
     total: showValues ? formatRupiah(totalValue(entries)) : undefined,
     othersTitle: experience.othersTitle,
-    others: otherClients(clientEntries, entries),
+    others: otherClientIds(clientEntries, entries).map((id) => clients.get(id)!),
   };
 }

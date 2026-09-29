@@ -30,7 +30,7 @@ Paket **Spark (gratis)** membatasi transfer ±360 MB/hari. Untuk production, gun
    firebase login
    firebase init hosting:github
    ```
-   Perintah ini membuat service account dan menyimpan secret di repo. Jika workflow yang dibuat berbeda nama, hapus file workflow buatan Firebase dan pakai yang ada di `.github/workflows/`. Pastikan nama secret-nya `FIREBASE_SERVICE_ACCOUNT` (ubah nama di workflow jika berbeda).
+   Perintah ini membuat service account dan menyimpan secret di repo. Jika workflow yang dibuat berbeda nama, hapus file workflow buatan Firebase dan pakai yang ada di `.github/workflows/`. Workflow proyek memakai secret `FIREBASE_SERVICE_ACCOUNT_IMPALA_AKBARINDO` (nama yang dibuat Firebase CLI untuk project ini).
 3. Di repo → Settings → Secrets and variables → Actions → **Variables**, tambahkan:
    | Nama                  | Contoh                                          |
    | --------------------- | ----------------------------------------------- |

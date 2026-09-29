@@ -9,7 +9,7 @@ import {
 import {
   formatRupiah,
   mapProjects,
-  otherClients,
+  otherClientIds,
   totalValue,
 } from '../../src/lib/sections/experience';
 import { mapCredentials } from '../../src/lib/sections/legality';
@@ -124,13 +124,13 @@ describe('experience', () => {
     expect(totalValue(projects)).toBe(9_770_880_280);
   });
 
-  test('otherClients hanya klien tanpa baris kontrak, urut order', () => {
+  test('otherClientIds hanya klien tanpa baris kontrak, urut order', () => {
     const all = [
       { id: 'c', data: { order: 3, name: 'Klien C' } },
       { id: 'a', data: { order: 1, name: 'Klien A' } },
       { id: 'd', data: { order: 2, name: 'Klien D' } },
     ];
-    expect(otherClients(all, projects)).toEqual(['Klien D', 'Klien C']);
+    expect(otherClientIds(all, projects)).toEqual(['d', 'c']);
   });
 });
 
