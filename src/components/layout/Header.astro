@@ -1,0 +1,66 @@
+---
+import { localizedPath, t, type Locale } from '../../i18n';
+import { site } from '../../config/site';
+import Container from '../ui/Container.astro';
+import Logo from '../ui/Logo.tsx';
+import LanguageSwitcher from './LanguageSwitcher.astro';
+import SectionNav from './SectionNav.astro';
+
+type Props = { lang: Locale; alternates: Record<Locale, string> };
+const { lang, alternates } = Astro.props;
+const dict = t(lang);
+---
+
+<header
+  data-site-header
+  class="group data-scrolled:text-primary-900 fixed inset-x-0 top-0 z-50 text-white transition duration-300 data-scrolled:bg-white/95 data-scrolled:shadow-hairline data-scrolled:backdrop-blur"
+>
+  <Container class="flex h-header items-center justify-between gap-6">
+    <a href={localizedPath(lang)} class="shrink-0" aria-label={`${dict.nav.home}`}>
+      <Logo name={site.shortName} />
+    </a>
+
+    <SectionNav lang={lang} variant="bar" class="hidden lg:block" />
+
+    <div class="flex items-center gap-4">
+      <LanguageSwitcher lang={lang} alternates={alternates} />
+      <button
+        type="button"
+        data-mobile-menu-open
+        aria-haspopup="dialog"
+        aria-expanded="false"
+        class="-mr-2 inline-flex size-11 items-center justify-center lg:hidden"
+      >
+        <span class="sr-only">{dict.common.openMenu}</span>
+        <svg viewBox="0 0 24 24" class="size-6" fill="none" aria-hidden="true">
+          <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.75"></path>
+        </svg>
+      </button>
+    </div>
+  </Container>
+</header>
+
+<dialog
+  data-mobile-menu
+  aria-label={dict.common.mainNav}
+  class="bg-primary-950 backdrop:bg-primary-950/60 m-0 ml-auto h-dvh max-h-none w-full max-w-sm p-0 text-white"
+>
+  <div class="flex h-header items-center justify-between px-4 sm:px-6">
+    <Logo name={site.shortName} />
+    <button
+      type="button"
+      data-mobile-menu-close
+      class="-mr-2 inline-flex size-11 items-center justify-center"
+    >
+      <span class="sr-only">{dict.common.closeMenu}</span>
+      <svg viewBox="0 0 24 24" class="size-6" fill="none" aria-hidden="true">
+        <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="1.75"></path>
+      </svg>
+    </button>
+  </div>
+  <SectionNav lang={lang} variant="drawer" class="px-4 pt-4 sm:px-6" />
+</dialog>
+
+<script>
+  import '../../scripts/header';
+</script>
