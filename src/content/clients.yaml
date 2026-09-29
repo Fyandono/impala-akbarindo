@@ -1,0 +1,59 @@
+# Klien yang tampil di strip "Instansi yang telah kami layani" (section Pengalaman).
+# Logo opsional: taruh file (PNG transparan/SVG, tinggi ≥ 200 px) di src/assets/clients/,
+# lalu isi `logo` dengan path relatif dari file ini. Tanpa logo, nama klien ditampilkan sebagai teks.
+- id: pemprov-jabar
+  order: 1
+  name: Pemerintah Provinsi Jawa Barat
+  logo: ../assets/clients/pemprov-jabar.png
+- id: rsud-bandung-kiwari
+  order: 2
+  name: RSUD Bandung Kiwari
+  logo: ../assets/clients/rsud-bandung-kiwari.png
+- id: gkn-bandung
+  order: 3
+  name: Gedung Keuangan Negara Bandung
+  logo: ../assets/clients/kemenkeu.png
+- id: rsj-jabar
+  order: 4
+  name: RS Jiwa Provinsi Jawa Barat
+  logo: ../assets/clients/rsj-jabar.png
+- id: stp-bandung
+  order: 5
+  name: Sekolah Tinggi Pariwisata Bandung
+  logo: ../assets/clients/stp-bandung.png
+- id: dprd-kota-bandung
+  order: 6
+  name: DPRD Kota Bandung
+  logo: ../assets/clients/dprd-kota-bandung.png
+- id: bkd-jabar
+  order: 7
+  name: BKD Provinsi Jawa Barat
+  logo: ../assets/clients/bkd-jabar.png
+- id: kpp-pratama-bogor
+  order: 8
+  name: KPP Pratama Bogor
+  logo: ../assets/clients/djp.png
+- id: bapenda-kota-bandung
+  order: 20
+  name: Bapenda Kota Bandung
+- id: bappelitbang-kota-bandung
+  order: 21
+  name: Bappelitbang Kota Bandung
+- id: disdukcapil-kota-bandung
+  order: 22
+  name: Disdukcapil Kota Bandung
+- id: diskominfo-kota-bandung
+  order: 23
+  name: Diskominfo Kota Bandung
+- id: distaru-kota-bandung
+  order: 24
+  name: Distaru Kota Bandung
+- id: dpkp3-kota-bandung
+  order: 25
+  name: DPKP3 Kota Bandung
+- id: upi
+  order: 26
+  name: Universitas Pendidikan Indonesia
+- id: graha-atma
+  order: 27
+  name: Graha Atma Kota Bandung

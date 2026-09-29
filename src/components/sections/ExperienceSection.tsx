@@ -1,4 +1,5 @@
 import { cx } from '../cx';
+import type { ResponsiveImage } from '../types';
 import Section from '../ui/Section';
 import SectionHeading from '../ui/SectionHeading';
 
@@ -8,6 +9,9 @@ export type ProjectRow = {
   /** Nilai kontrak yang sudah diformat, mis. "Rp 9.769.380.280". Kosong = kolom nilai disembunyikan. */
   value?: string;
 };
+
+/** Klien pada strip berjalan; tanpa logo, nama ditampilkan sebagai teks. */
+export type ClientItem = { name: string; logo?: ResponsiveImage };
 
 export type ExperienceSectionProps = {
   /** Anchor untuk navigasi one-page. */
@@ -23,9 +27,9 @@ export type ExperienceSectionProps = {
   projects: ProjectRow[];
   /** Total nilai kontrak yang sudah diformat. Kosong = baris total disembunyikan. */
   total?: string;
-  /** Klien lain tanpa rincian kontrak. */
-  othersTitle?: string;
-  others?: string[];
+  /** Judul strip klien, mis. "Instansi yang telah kami layani". */
+  clientsTitle?: string;
+  clients?: ClientItem[];
 };
 
 /** Rekam jejak kontrak: pemberi kerja, jenis pekerjaan, dan (opsional) nilai kontrak + total. */
@@ -39,8 +43,8 @@ export default function ExperienceSection({
   labels,
   projects,
   total,
-  othersTitle,
-  others = [],
+  clientsTitle,
+  clients = [],
 }: ExperienceSectionProps) {
   const showValues = projects.some((project) => project.value);
   return (
@@ -104,12 +108,14 @@ export default function ExperienceSection({
         )}
       </div>
 
-      {others.length > 0 && (
+      {clients.length > 0 && (
         <div className="mt-16 border-t border-neutral-300 pt-8" data-reveal>
-          {othersTitle && (
-            <h3 className="text-eyebrow font-semibold text-primary-500 uppercase">{othersTitle}</h3>
+          {clientsTitle && (
+            <h3 className="text-eyebrow font-semibold text-primary-500 uppercase">
+              {clientsTitle}
+            </h3>
           )}
-          {/* Marquee: daftar asli + duplikat (aria-hidden) agar gerakan tanpa jeda. */}
+          {/* Marquee: daftar asli + duplikat (aria-hidden) agar gerakan tanpa jeda. Logo dekoratif (alt kosong) karena nama klien selalu tertulis. */}
           <div className="marquee mt-5 overflow-hidden mask-fade-x">
             <div className="marquee-track flex w-max">
               {[false, true].map((clone) => (
@@ -121,12 +127,21 @@ export default function ExperienceSection({
                   )}
                   aria-hidden={clone || undefined}
                 >
-                  {others.map((name) => (
+                  {clients.map((client) => (
                     <li
-                      key={name}
-                      className="rounded-card border border-neutral-300 bg-white px-4 py-2 text-small whitespace-nowrap text-primary-700 motion-reduce:whitespace-normal"
+                      key={client.name}
+                      className="flex h-20 items-center gap-4 rounded-card border border-neutral-200 bg-white px-5 text-small whitespace-nowrap text-primary-700 motion-reduce:whitespace-normal"
                     >
-                      {name}
+                      {client.logo && (
+                        <img
+                          {...client.logo}
+                          alt=""
+                          loading="lazy"
+                          decoding="async"
+                          className="h-11 w-auto shrink-0 object-contain"
+                        />
+                      )}
+                      {client.name}
                     </li>
                   ))}
                 </ul>

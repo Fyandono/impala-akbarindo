@@ -1,10 +1,12 @@
 import { getCollection, type CollectionEntry } from 'astro:content';
 import type {
+  ClientItem,
   ExperienceSectionProps,
   ProjectRow,
 } from '../../components/sections/ExperienceSection';
 import { site } from '../../config/site';
 import { dict, intlLocale } from '../../i18n';
+import { responsiveImage } from '../image';
 import { byOrder, type SectionData } from './shared';
 
 /** `9769380280` → `Rp 9.769.380.280`. */
@@ -32,6 +34,17 @@ export function mapProjects(entries: Entry[], showValues: boolean): ProjectRow[]
 export const totalValue = (entries: Entry[]) =>
   entries.reduce((sum, { data }) => sum + data.value, 0);
 
+/** Klien untuk strip logo, urut `order`; logo dioptimasi bila ada. */
+export async function loadClients(): Promise<ClientItem[]> {
+  const entries = (await getCollection('clients')).sort(byOrder);
+  return Promise.all(
+    entries.map(async ({ data }) => ({
+      name: data.name,
+      logo: data.logo && (await responsiveImage(data.logo, data.name, '160px', [160, 320])),
+    })),
+  );
+}
+
 export async function loadExperience(): Promise<SectionData<ExperienceSectionProps>> {
   const { experience } = dict;
   const entries = await getCollection('projects');
@@ -48,7 +61,7 @@ export async function loadExperience(): Promise<SectionData<ExperienceSectionPro
     },
     projects: mapProjects(entries, showValues),
     total: showValues ? formatRupiah(totalValue(entries)) : undefined,
-    othersTitle: experience.othersTitle,
-    others: experience.others,
+    clientsTitle: experience.othersTitle,
+    clients: await loadClients(),
   };
 }

@@ -124,17 +124,7 @@
     "service": "Jenis pekerjaan",
     "value": "Nilai kontrak",
     "total": "Total nilai kontrak",
-    "othersTitle": "Juga melayani",
-    "others": [
-      "Bapenda Kota Bandung",
-      "Bappelitbang Kota Bandung",
-      "Disdukcapil Kota Bandung",
-      "Diskominfo Kota Bandung",
-      "Distaru Kota Bandung",
-      "DPKP3 Kota Bandung",
-      "Universitas Pendidikan Indonesia",
-      "Graha Atma Kota Bandung"
-    ]
+    "othersTitle": "Instansi yang telah kami layani"
   },
   "legality": {
     "title": "Legal, tersertifikasi, dan patuh regulasi",

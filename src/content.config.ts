@@ -71,6 +71,17 @@ const credentials = defineCollection({
   }),
 });
 
+/** Klien untuk strip logo di section Pengalaman. Logo opsional (src/assets/clients/). */
+const clients = defineCollection({
+  loader: file('src/content/clients.yaml'),
+  schema: ({ image }) =>
+    z.object({
+      name: text,
+      logo: image().optional(),
+      order: z.number().int(),
+    }),
+});
+
 /** Foto dokumentasi. Taruh file gambar di src/assets/gallery/ lalu daftarkan di gallery.yaml. */
 const gallery = defineCollection({
   loader: file('src/content/gallery.yaml'),
@@ -112,6 +123,7 @@ export const collections = {
   values,
   operations,
   projects,
+  clients,
   credentials,
   gallery,
   pages,

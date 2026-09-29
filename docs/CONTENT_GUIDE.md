@@ -6,20 +6,20 @@ Jalankan `npm run dev` untuk melihat perubahan secara langsung. Jika ada field y
 
 ## Di mana mengubah apa
 
-| Yang ingin diubah                                                              | File                                               |
-| ------------------------------------------------------------------------------ | -------------------------------------------------- |
-| Nama perusahaan, alamat, telepon, email, Instagram, peta, angka kunci beranda  | `src/config/site.ts`                               |
-| Menyalakan/mematikan section Dokumentasi, Tata Kelola, Keberlanjutan, Berita   | `src/config/site.ts` → `features`                  |
-| Teks section beranda (hero, profil, komitmen, misi, judul section), label menu | `src/i18n/id.json`                                 |
-| Daftar klien lain ("Juga melayani")                                            | `src/i18n/id.json` → `experience.others`           |
-| Struktur organisasi (komisaris, direksi, manajer, kepala bidang, staf)         | `src/content/management/*.yaml`                    |
-| Lini layanan                                                                   | `src/content/business/*.yaml`                      |
-| Keunggulan ("Mengapa memilih kami")                                            | `src/content/values.yaml`                          |
-| Standar kerja (tujuan & rencana kerja per layanan)                             | `src/content/operations.yaml`                      |
-| Pengalaman / kontrak (nilai kontrak tampil bila `showContractValues: true`)    | `src/content/projects.yaml`, `src/config/site.ts`  |
-| Legalitas & sertifikasi                                                        | `src/content/credentials.yaml`                     |
-| Foto dokumentasi                                                               | `src/assets/gallery/` + `src/content/gallery.yaml` |
-| Kebijakan Privasi, Cookie, Syarat                                              | `src/content/pages/{id,en}/*.md`                   |
+| Yang ingin diubah                                                              | File                                                       |
+| ------------------------------------------------------------------------------ | ---------------------------------------------------------- |
+| Nama perusahaan, alamat, telepon, email, Instagram, peta, angka kunci beranda  | `src/config/site.ts`                                       |
+| Menyalakan/mematikan section Dokumentasi, Tata Kelola, Keberlanjutan, Berita   | `src/config/site.ts` → `features`                          |
+| Teks section beranda (hero, profil, komitmen, misi, judul section), label menu | `src/i18n/id.json`                                         |
+| Klien & logo (strip "Instansi yang telah kami layani")                         | `src/content/clients.yaml` + logo di `src/assets/clients/` |
+| Struktur organisasi (komisaris, direksi, manajer, kepala bidang, staf)         | `src/content/management/*.yaml`                            |
+| Lini layanan                                                                   | `src/content/business/*.yaml`                              |
+| Keunggulan ("Mengapa memilih kami")                                            | `src/content/values.yaml`                                  |
+| Standar kerja (tujuan & rencana kerja per layanan)                             | `src/content/operations.yaml`                              |
+| Pengalaman / kontrak (nilai kontrak tampil bila `showContractValues: true`)    | `src/content/projects.yaml`, `src/config/site.ts`          |
+| Legalitas & sertifikasi                                                        | `src/content/credentials.yaml`                             |
+| Foto dokumentasi                                                               | `src/assets/gallery/` + `src/content/gallery.yaml`         |
+| Kebijakan Privasi, Cookie, Syarat                                              | `src/content/pages/{id,en}/*.md`                           |
 
 ## Foto dokumentasi (section Dokumentasi)
 
@@ -27,7 +27,11 @@ Jalankan `npm run dev` untuk melihat perubahan secara langsung. Jika ada field y
 2. Buka `src/content/gallery.yaml`, ubah `image` pada entri yang ada (mis. `../assets/gallery/apel-rutin.jpg`) atau tambah entri baru dengan `caption` dan `order`.
 3. Hapus `placeholder-*.svg` bila sudah tidak dipakai. Foto otomatis dikompres (WebP, beberapa ukuran) saat build.
 
-Foto layanan (kartu di section Layanan) saat ini berupa ilustrasi di `src/assets/illustrations/`; ganti `image` di `src/content/business/*.yaml` untuk memakai foto.
+Foto layanan (kartu di section Layanan) saat ini berupa ilustrasi di `src/assets/illustrations/`. Untuk memakai foto: taruh di `src/assets/services/` (rasio 4:5, lebar ≥ 1200 px), lalu ubah `image` di `src/content/business/*.yaml`, mis. `image: ../../assets/services/kebersihan.jpg`.
+
+## Logo klien
+
+Taruh logo (PNG transparan atau SVG, tinggi ≥ 200 px) di `src/assets/clients/`, lalu isi `logo` pada entri di `src/content/clients.yaml` (mis. `logo: ../assets/clients/bapenda.png`). Klien tanpa `logo` tampil sebagai teks. Tambah klien baru = tambah entri baru dengan `id`, `order`, `name`.
 
 ## Struktur one-page
 
