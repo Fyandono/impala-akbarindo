@@ -280,28 +280,9 @@
     transform: translate3d(0, -0.375rem, 0);
   }
 
-  /* Deretan logo/nama klien yang bergerak terus (duplikat diberi aria-hidden). */
-  .marquee-track {
-    animation: marquee 40s linear infinite;
-  }
-  .marquee:hover .marquee-track {
-    animation-play-state: paused;
-  }
-
   /* Pola garis di section gelap bergeser perlahan. */
   .pattern-drift {
     animation: drift 30s linear infinite;
-  }
-}
-
-/* Tanpa animasi: klien ditampilkan sebagai daftar biasa, duplikat marquee disembunyikan. */
-@media (prefers-reduced-motion: reduce) {
-  .marquee-track {
-    flex-wrap: wrap;
-    width: auto;
-  }
-  .marquee-clone {
-    display: none;
   }
 }
 
@@ -403,11 +384,6 @@
     transform: none;
   }
 }
-@keyframes marquee {
-  to {
-    transform: translate3d(-50%, 0, 0);
-  }
-}
 @keyframes drift {
   to {
     transform: translate3d(-32px, 0, 0);
@@ -488,9 +464,6 @@
 }
 @utility pattern-fade-left {
   mask-image: radial-gradient(ellipse 70% 90% at 0% 80%, black 0%, transparent 70%);
-}
-@utility mask-fade-x {
-  mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
 }
 @utility pattern-fade-center {
   mask-image: radial-gradient(ellipse 60% 80% at 50% 50%, black 0%, transparent 75%);

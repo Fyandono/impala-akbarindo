@@ -1,4 +1,4 @@
-import { defineCollection } from 'astro:content';
+import { defineCollection, reference } from 'astro:content';
 import { file, glob } from 'astro/loaders';
 import { z } from 'astro/zod';
 
@@ -48,11 +48,14 @@ const operations = defineCollection({
   }),
 });
 
-/** Pengalaman kontrak. `value` = nilai kontrak dalam rupiah (angka bulat). */
+/**
+ * Pengalaman kontrak. `client` = id di clients.yaml (nama & logo); `value` = nilai kontrak dalam
+ * rupiah (angka bulat, tampil hanya bila `site.showContractValues`).
+ */
 const projects = defineCollection({
   loader: file('src/content/projects.yaml'),
   schema: z.object({
-    client: z.string().min(1),
+    client: reference('clients'),
     service: text,
     value: z.number().int().positive(),
     order: z.number().int(),
@@ -71,7 +74,7 @@ const credentials = defineCollection({
   }),
 });
 
-/** Klien untuk strip logo di section Pengalaman. Logo opsional (src/assets/clients/). */
+/** Klien (nama + logo opsional di src/assets/clients/), dirujuk oleh `projects`. */
 const clients = defineCollection({
   loader: file('src/content/clients.yaml'),
   schema: ({ image }) =>

@@ -1,13 +1,14 @@
-# Klien yang tampil di strip "Instansi yang telah kami layani" (section Pengalaman).
+# Daftar klien (section Pengalaman). Klien yang dirujuk projects.yaml tampil di daftar kontrak
+# beserta logonya; sisanya tampil di daftar "Juga melayani".
 # Logo opsional: taruh file (PNG transparan/SVG, tinggi ≥ 200 px) di src/assets/clients/,
-# lalu isi `logo` dengan path relatif dari file ini. Tanpa logo, nama klien ditampilkan sebagai teks.
+# lalu isi `logo` dengan path relatif dari file ini.
 - id: pemprov-jabar
   order: 1
   name: Pemerintah Provinsi Jawa Barat
   logo: ../assets/clients/pemprov-jabar.png
 - id: rsud-bandung-kiwari
   order: 2
-  name: RSUD Bandung Kiwari
+  name: RSUD Bandung Kiwari Kota Bandung
   logo: ../assets/clients/rsud-bandung-kiwari.png
 - id: gkn-bandung
   order: 3
@@ -15,7 +16,7 @@
   logo: ../assets/clients/kemenkeu.png
 - id: rsj-jabar
   order: 4
-  name: RS Jiwa Provinsi Jawa Barat
+  name: Rumah Sakit Jiwa Provinsi Jawa Barat
   logo: ../assets/clients/rsj-jabar.png
 - id: stp-bandung
   order: 5
@@ -27,11 +28,11 @@
   logo: ../assets/clients/dprd-kota-bandung.png
 - id: bkd-jabar
   order: 7
-  name: BKD Provinsi Jawa Barat
+  name: Badan Kepegawaian Daerah Provinsi Jawa Barat
   logo: ../assets/clients/bkd-jabar.png
 - id: kpp-pratama-bogor
   order: 8
-  name: KPP Pratama Bogor
+  name: Kantor Pajak Pratama Bogor
   logo: ../assets/clients/djp.png
 - id: bapenda-kota-bandung
   order: 20

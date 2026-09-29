@@ -1,45 +1,46 @@
+# Kontrak yang tampil di section Pengalaman. `client` = `id` klien di clients.yaml (nama & logo diambil dari sana).
 - id: pemprov-jabar
   order: 1
-  client: Pemerintah Provinsi Jawa Barat
+  client: pemprov-jabar
   service: Jasa Kebersihan
   value: 9769380280
 - id: rsud-bandung-kiwari
   order: 2
-  client: RSUD Bandung Kiwari Kota Bandung
+  client: rsud-bandung-kiwari
   service: Jasa Kebersihan
   value: 6128136000
 - id: gkn-bandung
   order: 3
-  client: Gedung Keuangan Negara Bandung
+  client: gkn-bandung
   service: Jasa Kebersihan
   value: 2953972519
 - id: rsj-jabar
   order: 4
-  client: Rumah Sakit Jiwa Provinsi Jawa Barat
+  client: rsj-jabar
   service: Jasa Keamanan
   value: 2460480000
 - id: stp-bandung
   order: 5
-  client: Sekolah Tinggi Pariwisata Bandung
+  client: stp-bandung
   service: Jasa Kebersihan
   value: 2054387446
 - id: dprd-kota-bandung
   order: 6
-  client: DPRD Kota Bandung
+  client: dprd-kota-bandung
   service: Jasa Kebersihan dan Keamanan
   value: 979752600
 - id: bkd-jabar-pengemudi
   order: 7
-  client: Badan Kepegawaian Daerah Provinsi Jawa Barat
+  client: bkd-jabar
   service: Jasa Tenaga Pengemudi
   value: 573587982
 - id: kpp-pratama-bogor
   order: 8
-  client: Kantor Pajak Pratama Bogor
+  client: kpp-pratama-bogor
   service: Jasa Kebersihan
   value: 299712000
 - id: bkd-jabar-front-office
   order: 9
-  client: Badan Kepegawaian Daerah Provinsi Jawa Barat
+  client: bkd-jabar
   service: Jasa Tenaga Front Office
   value: 263994880

@@ -6,7 +6,12 @@ import {
   instagramHandle,
   telHref,
 } from '../../src/lib/sections/contact';
-import { formatRupiah, mapProjects, totalValue } from '../../src/lib/sections/experience';
+import {
+  formatRupiah,
+  mapProjects,
+  otherClients,
+  totalValue,
+} from '../../src/lib/sections/experience';
 import { mapCredentials } from '../../src/lib/sections/legality';
 import { groupPeople } from '../../src/lib/sections/management';
 import { latestNews } from '../../src/lib/sections/news';
@@ -82,33 +87,50 @@ describe('operations', () => {
 });
 
 describe('experience', () => {
+  const ref = (id: string) => ({ collection: 'clients' as const, id });
   const projects = [
-    { data: { order: 2, client: 'B', service: 'Keamanan', value: 1_500_000 } },
-    {
-      data: { order: 1, client: 'A', service: 'Kebersihan', value: 9_769_380_280 },
-    },
+    { data: { order: 2, client: ref('b'), service: 'Keamanan', value: 1_500_000 } },
+    { data: { order: 1, client: ref('a'), service: 'Kebersihan', value: 9_769_380_280 } },
   ];
+  const logo = { src: '/a.png', alt: '', width: 10, height: 10 };
+  const clients = new Map([
+    ['a', { name: 'Klien A', logo }],
+    ['b', { name: 'Klien B' }],
+  ]);
 
   test('formatRupiah memakai format Indonesia', () => {
     expect(formatRupiah(9_769_380_280)).toBe('Rp 9.769.380.280');
   });
 
-  test('mapProjects urut order dan memformat nilai', () => {
-    expect(mapProjects(projects, true)).toEqual([
-      { client: 'A', service: 'Kebersihan', value: 'Rp 9.769.380.280' },
-      { client: 'B', service: 'Keamanan', value: 'Rp 1.500.000' },
+  test('mapProjects urut order, memakai nama & logo klien, dan memformat nilai', () => {
+    expect(mapProjects(projects, clients, true)).toEqual([
+      { client: 'Klien A', logo, service: 'Kebersihan', value: 'Rp 9.769.380.280' },
+      { client: 'Klien B', logo: undefined, service: 'Keamanan', value: 'Rp 1.500.000' },
     ]);
   });
 
   test('mapProjects tanpa nilai kontrak bila disembunyikan', () => {
-    expect(mapProjects(projects, false)).toEqual([
-      { client: 'A', service: 'Kebersihan' },
-      { client: 'B', service: 'Keamanan' },
+    expect(mapProjects(projects, clients, false).map((p) => p.value)).toEqual([
+      undefined,
+      undefined,
     ]);
+  });
+
+  test('mapProjects gagal jelas bila klien tidak ada', () => {
+    expect(() => mapProjects(projects, new Map(), false)).toThrow(/clients\.yaml/);
   });
 
   test('totalValue menjumlahkan nilai kontrak', () => {
     expect(totalValue(projects)).toBe(9_770_880_280);
+  });
+
+  test('otherClients hanya klien tanpa baris kontrak, urut order', () => {
+    const all = [
+      { id: 'c', data: { order: 3, name: 'Klien C' } },
+      { id: 'a', data: { order: 1, name: 'Klien A' } },
+      { id: 'd', data: { order: 2, name: 'Klien D' } },
+    ];
+    expect(otherClients(all, projects)).toEqual(['Klien D', 'Klien C']);
   });
 });
 

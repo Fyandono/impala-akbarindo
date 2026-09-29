@@ -11,7 +11,7 @@ Jalankan `npm run dev` untuk melihat perubahan secara langsung. Jika ada field y
 | Nama perusahaan, alamat, telepon, email, Instagram, peta, angka kunci beranda  | `src/config/site.ts`                                       |
 | Menyalakan/mematikan section Dokumentasi, Tata Kelola, Keberlanjutan, Berita   | `src/config/site.ts` → `features`                          |
 | Teks section beranda (hero, profil, komitmen, misi, judul section), label menu | `src/i18n/id.json`                                         |
-| Klien & logo (strip "Instansi yang telah kami layani")                         | `src/content/clients.yaml` + logo di `src/assets/clients/` |
+| Klien & logo (daftar kontrak + "Juga melayani")                                | `src/content/clients.yaml` + logo di `src/assets/clients/` |
 | Struktur organisasi (komisaris, direksi, manajer, kepala bidang, staf)         | `src/content/management/*.yaml`                            |
 | Lini layanan                                                                   | `src/content/business/*.yaml`                              |
 | Keunggulan ("Mengapa memilih kami")                                            | `src/content/values.yaml`                                  |
@@ -31,7 +31,10 @@ Foto layanan (kartu di section Layanan) saat ini berupa ilustrasi di `src/assets
 
 ## Logo klien
 
-Taruh logo (PNG transparan atau SVG, tinggi ≥ 200 px) di `src/assets/clients/`, lalu isi `logo` pada entri di `src/content/clients.yaml` (mis. `logo: ../assets/clients/bapenda.png`). Klien tanpa `logo` tampil sebagai teks. Tambah klien baru = tambah entri baru dengan `id`, `order`, `name`.
+Nama & logo klien ada di `src/content/clients.yaml`; logo di `src/assets/clients/` (PNG transparan atau SVG, tinggi ≥ 200 px), mis. `logo: ../assets/clients/bapenda.png`.
+
+- Klien yang dirujuk kontrak di `src/content/projects.yaml` (`client: <id klien>`) tampil di daftar kontrak dengan logonya di kiri nama.
+- Klien lain tampil sebagai teks di daftar "Juga melayani".
 
 ## Struktur one-page
 

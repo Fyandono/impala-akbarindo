@@ -5,13 +5,12 @@ import SectionHeading from '../ui/SectionHeading';
 
 export type ProjectRow = {
   client: string;
+  /** Logo pemberi kerja (dekoratif; nama selalu tertulis di sebelahnya). */
+  logo?: ResponsiveImage;
   service: string;
   /** Nilai kontrak yang sudah diformat, mis. "Rp 9.769.380.280". Kosong = kolom nilai disembunyikan. */
   value?: string;
 };
-
-/** Klien pada strip berjalan; tanpa logo, nama ditampilkan sebagai teks. */
-export type ClientItem = { name: string; logo?: ResponsiveImage };
 
 export type ExperienceSectionProps = {
   /** Anchor untuk navigasi one-page. */
@@ -27,12 +26,12 @@ export type ExperienceSectionProps = {
   projects: ProjectRow[];
   /** Total nilai kontrak yang sudah diformat. Kosong = baris total disembunyikan. */
   total?: string;
-  /** Judul strip klien, mis. "Instansi yang telah kami layani". */
-  clientsTitle?: string;
-  clients?: ClientItem[];
+  /** Klien lain tanpa rincian kontrak. */
+  othersTitle?: string;
+  others?: string[];
 };
 
-/** Rekam jejak kontrak: pemberi kerja, jenis pekerjaan, dan (opsional) nilai kontrak + total. */
+/** Rekam jejak kontrak: logo & nama pemberi kerja, jenis pekerjaan, (opsional) nilai + total. */
 export default function ExperienceSection({
   id,
   titleId = `${id ?? 'experience'}-title`,
@@ -43,8 +42,8 @@ export default function ExperienceSection({
   labels,
   projects,
   total,
-  clientsTitle,
-  clients = [],
+  othersTitle,
+  others = [],
 }: ExperienceSectionProps) {
   const showValues = projects.some((project) => project.value);
   return (
@@ -65,24 +64,31 @@ export default function ExperienceSection({
           {projects.map((project) => (
             <li
               key={`${project.client}-${project.service}`}
-              className="group relative grid gap-2 py-6 md:grid-cols-12 md:items-baseline md:gap-6"
-              data-reveal="left"
+              className="grid gap-2 py-5 md:grid-cols-12 md:items-center md:gap-6"
+              data-reveal
             >
-              <span
-                className="absolute inset-y-0 -left-4 w-0.5 origin-top scale-y-0 bg-accent-700 transition-transform duration-500 group-hover:scale-y-100"
-                aria-hidden="true"
-              />
-              <h3
+              <div
                 className={cx(
-                  'text-body-lg transition-transform duration-500 group-hover:translate-x-2',
+                  'flex items-center gap-4',
                   showValues ? 'md:col-span-6' : 'md:col-span-8',
                 )}
               >
-                {project.client}
-              </h3>
+                <span className="flex h-12 w-20 shrink-0 items-center justify-center">
+                  {project.logo && (
+                    <img
+                      {...project.logo}
+                      alt=""
+                      loading="lazy"
+                      decoding="async"
+                      className="max-h-12 max-w-full object-contain"
+                    />
+                  )}
+                </span>
+                <h3 className="text-body-lg">{project.client}</h3>
+              </div>
               <p
                 className={cx(
-                  'text-small text-neutral-600',
+                  'pl-24 text-small text-neutral-600 md:pl-0',
                   showValues ? 'md:col-span-3' : 'md:col-span-4',
                 )}
               >
@@ -90,7 +96,7 @@ export default function ExperienceSection({
                 {project.service}
               </p>
               {project.value && (
-                <p className="font-medium text-primary-900 tabular-nums md:col-span-3 md:text-right">
+                <p className="pl-24 font-medium text-primary-900 tabular-nums md:col-span-3 md:pl-0 md:text-right">
                   <span className="sr-only">{labels.value}: </span>
                   {project.value}
                 </p>
@@ -108,46 +114,21 @@ export default function ExperienceSection({
         )}
       </div>
 
-      {clients.length > 0 && (
-        <div className="mt-16 border-t border-neutral-300 pt-8" data-reveal>
-          {clientsTitle && (
-            <h3 className="text-eyebrow font-semibold text-primary-500 uppercase">
-              {clientsTitle}
-            </h3>
+      {others.length > 0 && (
+        <div className="mt-16" data-reveal>
+          {othersTitle && (
+            <h3 className="text-eyebrow font-semibold text-primary-500 uppercase">{othersTitle}</h3>
           )}
-          {/* Marquee: daftar asli + duplikat (aria-hidden) agar gerakan tanpa jeda. Logo dekoratif (alt kosong) karena nama klien selalu tertulis. */}
-          <div className="marquee mt-5 overflow-hidden mask-fade-x">
-            <div className="marquee-track flex w-max">
-              {[false, true].map((clone) => (
-                <ul
-                  key={String(clone)}
-                  className={cx(
-                    'flex shrink-0 gap-3 pr-3 motion-reduce:flex-wrap',
-                    clone && 'marquee-clone',
-                  )}
-                  aria-hidden={clone || undefined}
-                >
-                  {clients.map((client) => (
-                    <li
-                      key={client.name}
-                      className="flex h-20 items-center gap-4 rounded-card border border-neutral-200 bg-white px-5 text-small whitespace-nowrap text-primary-700 motion-reduce:whitespace-normal"
-                    >
-                      {client.logo && (
-                        <img
-                          {...client.logo}
-                          alt=""
-                          loading="lazy"
-                          decoding="async"
-                          className="h-11 w-auto shrink-0 object-contain"
-                        />
-                      )}
-                      {client.name}
-                    </li>
-                  ))}
-                </ul>
-              ))}
-            </div>
-          </div>
+          <ul className="mt-5 flex flex-wrap gap-3">
+            {others.map((name) => (
+              <li
+                key={name}
+                className="rounded-card border border-neutral-300 bg-white px-4 py-2 text-small text-primary-700"
+              >
+                {name}
+              </li>
+            ))}
+          </ul>
         </div>
       )}
     </Section>
