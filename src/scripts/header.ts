@@ -9,10 +9,9 @@ if (header) {
 
 /**
  * Scroll-spy: tandai link menu untuk section yang sedang melewati tengah layar
- * (`aria-current="true"`), dan bawa anchor section itu saat pindah bahasa.
+ * (`aria-current="true"`).
  */
 const sectionLinks = document.querySelectorAll<HTMLAnchorElement>('[data-section-link]');
-const langLinks = document.querySelectorAll<HTMLAnchorElement>('[data-lang-link]');
 const sections = [...new Set([...sectionLinks].map((link) => link.dataset.sectionLink!))]
   .map((id) => document.getElementById(id))
   .filter((el): el is HTMLElement => el !== null);
@@ -25,7 +24,6 @@ if (sections.length > 0) {
       if (link.dataset.sectionLink === id) link.setAttribute('aria-current', 'true');
       else link.removeAttribute('aria-current');
     });
-    langLinks.forEach((link) => (link.hash = id ?? ''));
   };
   const observer = new IntersectionObserver(
     (entries) => {

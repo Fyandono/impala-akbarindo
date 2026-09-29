@@ -10,16 +10,15 @@ export type NusantaraPatternProps = {
 };
 
 /**
- * Motif kawung (batik geometris klasik Jawa) sebagai latar dekoratif.
- * Empat kelopak diagonal bertemu di satu titik, berulang dalam kisi. Letakkan sebagai anak
- * section yang `relative isolate overflow-hidden`.
+ * Motif garis miring tipis — mengikuti kemiringan kaki huruf "A" pada logo dan bidang diagonal
+ * di company profile. Letakkan sebagai anak section yang `relative isolate overflow-hidden`.
  */
 export default function NusantaraPattern({
   tone = 'dark',
   fade = 'right',
   className,
 }: NusantaraPatternProps) {
-  const id = `kawung-${useId().replace(/[^a-zA-Z0-9_-]/g, '')}`;
+  const id = `stripes-${useId().replace(/[^a-zA-Z0-9_-]/g, '')}`;
   return (
     <svg
       className={cx(
@@ -33,18 +32,14 @@ export default function NusantaraPattern({
       aria-hidden="true"
     >
       <defs>
-        <pattern id={id} width="72" height="72" patternUnits="userSpaceOnUse">
-          <g fill="none" stroke="currentColor" strokeWidth="1">
-            <ellipse cx="18" cy="18" rx="22" ry="9" transform="rotate(45 18 18)" />
-            <ellipse cx="54" cy="18" rx="22" ry="9" transform="rotate(-45 54 18)" />
-            <ellipse cx="18" cy="54" rx="22" ry="9" transform="rotate(-45 18 54)" />
-            <ellipse cx="54" cy="54" rx="22" ry="9" transform="rotate(45 54 54)" />
-            <circle cx="36" cy="36" r="3" />
-            <circle cx="0" cy="0" r="3" />
-            <circle cx="72" cy="0" r="3" />
-            <circle cx="0" cy="72" r="3" />
-            <circle cx="72" cy="72" r="3" />
-          </g>
+        <pattern
+          id={id}
+          width="32"
+          height="32"
+          patternUnits="userSpaceOnUse"
+          patternTransform="skewX(-16)"
+        >
+          <path d="M0.5 0V32" fill="none" stroke="currentColor" strokeWidth="1" />
         </pattern>
       </defs>
       <rect width="100%" height="100%" fill={`url(#${id})`} />

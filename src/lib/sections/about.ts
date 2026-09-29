@@ -1,49 +1,20 @@
 import { getCollection, type CollectionEntry } from 'astro:content';
 import type { AboutIntroProps } from '../../components/sections/AboutIntro';
 import type { StatsBandProps } from '../../components/sections/StatsBand';
-import type { Milestone, TimelineProps } from '../../components/sections/Timeline';
 import type { ValueItem, ValuesGridProps } from '../../components/sections/ValuesGrid';
 import type { VisionMissionProps } from '../../components/sections/VisionMission';
 import { site } from '../../config/site';
-import { localize, t, type Locale, type LocalizedString } from '../../i18n';
+import { dict, lang } from '../../i18n';
 import { byOrder, type SectionData } from './shared';
 
-type SiteStat = { value: number; suffix?: LocalizedString; label: LocalizedString };
-
-export function mapStats(stats: readonly SiteStat[], lang: Locale): StatsBandProps['stats'] {
-  return stats.map((stat) => ({
-    value: stat.value,
-    label: localize(stat.label, lang),
-    suffix: stat.suffix && localize(stat.suffix, lang),
-  }));
-}
-
-export function mapValues(
-  entries: Pick<CollectionEntry<'values'>, 'data'>[],
-  lang: Locale,
-): ValueItem[] {
-  return [...entries].sort(byOrder).map(({ data }) => ({
-    title: localize(data.title, lang),
-    description: localize(data.description, lang),
-  }));
-}
-
-export function mapMilestones(
-  entries: Pick<CollectionEntry<'milestones'>, 'data'>[],
-  lang: Locale,
-): Milestone[] {
+export function mapValues(entries: Pick<CollectionEntry<'values'>, 'data'>[]): ValueItem[] {
   return [...entries]
-    .sort((a, b) => a.data.year - b.data.year)
-    .map(({ data }) => ({
-      year: data.year,
-      title: localize(data.title, lang),
-      description: localize(data.description, lang),
-    }));
+    .sort(byOrder)
+    .map(({ data }) => ({ title: data.title, description: data.description }));
 }
 
 /** Semua props untuk rangkaian section "Tentang Kami". */
-export async function loadAbout(lang: Locale) {
-  const dict = t(lang);
+export async function loadAbout() {
   const { about, home } = dict;
   return {
     intro: {
@@ -55,7 +26,7 @@ export async function loadAbout(lang: Locale) {
     stats: {
       title: home.statsTitle,
       note: home.statsNote,
-      stats: mapStats(site.stats, lang),
+      stats: [...site.stats],
       locale: lang,
     } satisfies SectionData<StatsBandProps>,
     visionMission: {
@@ -67,12 +38,7 @@ export async function loadAbout(lang: Locale) {
     values: {
       eyebrow: about.valuesEyebrow,
       title: about.valuesTitle,
-      values: mapValues(await getCollection('values'), lang),
+      values: mapValues(await getCollection('values')),
     } satisfies SectionData<ValuesGridProps>,
-    timeline: {
-      eyebrow: about.historyEyebrow,
-      title: about.historyTitle,
-      milestones: mapMilestones(await getCollection('milestones'), lang),
-    } satisfies SectionData<TimelineProps>,
   };
 }

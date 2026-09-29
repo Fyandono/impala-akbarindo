@@ -17,7 +17,7 @@ export default function CinematicStatement({ eyebrow, statement, index }: Cinema
       <div className="absolute inset-0 -z-20" aria-hidden="true">
         <div
           data-parallax
-          className="absolute -bottom-1/2 -left-1/4 aspect-square w-3/4 rounded-full bg-white/5 blur-3xl"
+          className="absolute -bottom-1/2 -left-1/4 aspect-square w-3/4 rounded-full bg-accent-700/20 blur-3xl"
         />
       </div>
       <NusantaraPattern fade="left" />

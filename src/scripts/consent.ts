@@ -13,7 +13,6 @@ if (config && measurementId) {
   stylesheet.rel = 'stylesheet';
   stylesheet.href = cookieConsentCss;
   document.head.appendChild(stylesheet);
-  const lang = document.documentElement.lang === 'en' ? 'en' : 'id';
   const s = JSON.parse(config.dataset.strings ?? '{}') as ConsentStrings;
   const cookiesUrl = config.dataset.cookiesUrl ?? '#';
   const cookiesLabel = config.dataset.cookiesLabel ?? '';
@@ -40,9 +39,9 @@ if (config && measurementId) {
     onConsent: syncAnalytics,
     onChange: syncAnalytics,
     language: {
-      default: lang,
+      default: 'id',
       translations: {
-        [lang]: {
+        id: {
           consentModal: {
             title: s.title,
             description: `${s.description} ${moreInfo}`,

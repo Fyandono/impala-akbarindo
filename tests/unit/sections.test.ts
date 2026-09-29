@@ -1,34 +1,25 @@
 import { describe, expect, test } from 'vitest';
-import { mapMilestones, mapStats, mapValues } from '../../src/lib/sections/about';
-import { addressLines, contactDetails, telHref } from '../../src/lib/sections/contact';
+import { mapValues } from '../../src/lib/sections/about';
+import {
+  addressLines,
+  contactDetails,
+  instagramHandle,
+  telHref,
+} from '../../src/lib/sections/contact';
+import { formatRupiah, mapProjects, totalValue } from '../../src/lib/sections/experience';
+import { mapCredentials } from '../../src/lib/sections/legality';
 import { groupPeople } from '../../src/lib/sections/management';
 import { latestNews } from '../../src/lib/sections/news';
+import { mapOperations } from '../../src/lib/sections/operations';
 import { byOrder } from '../../src/lib/sections/shared';
 
-const ls = (id: string, en = `${id} (en)`) => ({ id, en });
-
 describe('about', () => {
-  test('mapStats melokalkan label & suffix', () => {
-    expect(mapStats([{ value: 25, suffix: ls('rb+', 'k+'), label: ls('Insan') }], 'en')).toEqual([
-      { value: 25, suffix: 'k+', label: 'Insan (en)' },
-    ]);
-  });
-
   test('mapValues urut berdasarkan order', () => {
     const values = [
-      { data: { order: 2, title: ls('B'), description: ls('b') } },
-      { data: { order: 1, title: ls('A'), description: ls('a') } },
+      { data: { order: 2, title: 'B', description: 'b' } },
+      { data: { order: 1, title: 'A', description: 'a' } },
     ];
-    expect(mapValues(values, 'id').map((v) => v.title)).toEqual(['A', 'B']);
-  });
-
-  test('mapMilestones urut berdasarkan tahun tanpa mengubah input', () => {
-    const input = [
-      { id: 'b', data: { year: 2012, title: ls('B'), description: ls('b') } },
-      { id: 'a', data: { year: 1975, title: ls('A'), description: ls('a') } },
-    ];
-    expect(mapMilestones(input, 'id').map((m) => m.year)).toEqual([1975, 2012]);
-    expect(input[0]!.data.year).toBe(2012);
+    expect(mapValues(values).map((v) => v.title)).toEqual(['A', 'B']);
   });
 });
 
@@ -54,43 +45,148 @@ describe('news', () => {
   const entry = (id: string, date: string, draft = false) =>
     ({ id, data: { date: new Date(date), draft } }) as never;
 
-  test('latestNews: satu bahasa, tanpa draft, terbaru dulu, dibatasi', () => {
+  test('latestNews: tanpa draft, terbaru dulu, dibatasi', () => {
     const entries = [
-      entry('id/lama', '2026-01-01'),
-      entry('en/english', '2026-06-01'),
-      entry('id/baru', '2026-05-01'),
-      entry('id/draf', '2026-07-01', true),
-      entry('id/tengah', '2026-03-01'),
+      entry('lama', '2026-01-01'),
+      entry('baru', '2026-05-01'),
+      entry('draf', '2026-07-01', true),
+      entry('tengah', '2026-03-01'),
     ];
-    const result = latestNews(entries, 'id', 2) as unknown as { id: string }[];
-    expect(result.map((e) => e.id)).toEqual(['id/baru', 'id/tengah']);
+    const result = latestNews(entries, 2) as unknown as { id: string }[];
+    expect(result.map((e) => e.id)).toEqual(['baru', 'tengah']);
+  });
+});
+
+describe('operations', () => {
+  test('mapOperations urut order dan menyalin tujuan & rutinitas', () => {
+    const entries = [
+      {
+        data: {
+          order: 2,
+          title: 'Keamanan',
+          goals: ['Aman'],
+          routines: [{ frequency: 'Harian', description: 'Patroli' }],
+        },
+      },
+      { data: { order: 1, title: 'Kebersihan', goals: ['Bersih'], routines: [] } },
+    ];
+    expect(mapOperations(entries)).toEqual([
+      { title: 'Kebersihan', goals: ['Bersih'], routines: [] },
+      {
+        title: 'Keamanan',
+        goals: ['Aman'],
+        routines: [{ frequency: 'Harian', description: 'Patroli' }],
+      },
+    ]);
+  });
+});
+
+describe('experience', () => {
+  const projects = [
+    { data: { order: 2, client: 'B', service: 'Keamanan', value: 1_500_000 } },
+    {
+      data: { order: 1, client: 'A', service: 'Kebersihan', value: 9_769_380_280 },
+    },
+  ];
+
+  test('formatRupiah memakai format Indonesia', () => {
+    expect(formatRupiah(9_769_380_280)).toBe('Rp 9.769.380.280');
+  });
+
+  test('mapProjects urut order dan memformat nilai', () => {
+    expect(mapProjects(projects, true)).toEqual([
+      { client: 'A', service: 'Kebersihan', value: 'Rp 9.769.380.280' },
+      { client: 'B', service: 'Keamanan', value: 'Rp 1.500.000' },
+    ]);
+  });
+
+  test('mapProjects tanpa nilai kontrak bila disembunyikan', () => {
+    expect(mapProjects(projects, false)).toEqual([
+      { client: 'A', service: 'Kebersihan' },
+      { client: 'B', service: 'Keamanan' },
+    ]);
+  });
+
+  test('totalValue menjumlahkan nilai kontrak', () => {
+    expect(totalValue(projects)).toBe(9_770_880_280);
+  });
+});
+
+describe('legality', () => {
+  test('mapCredentials memfilter grup dan mengurutkan order', () => {
+    const entries = [
+      { data: { group: 'permit', order: 1, title: 'NIB', description: 'n' } },
+      {
+        data: {
+          group: 'certification',
+          order: 2,
+          code: 'ISO 45001',
+          title: 'K3',
+          description: 'k',
+        },
+      },
+      {
+        data: {
+          group: 'certification',
+          order: 1,
+          code: 'ISO 9001',
+          title: 'Mutu',
+          description: 'm',
+        },
+      },
+    ] as const;
+    expect(mapCredentials([...entries], 'certification').map((c) => c.code)).toEqual([
+      'ISO 9001',
+      'ISO 45001',
+    ]);
+    expect(mapCredentials([...entries], 'permit')).toEqual([
+      { code: undefined, title: 'NIB', description: 'n' },
+    ]);
   });
 });
 
 describe('contact', () => {
   const contact = {
-    phone: '+62 21 000 0000',
+    phone: '+62 22 8202 7114',
+    mobile: { number: '+62 813 2121 2110', name: 'Agung' },
     email: 'info@example.co.id',
-    hours: ls('Senin – Jumat', 'Monday – Friday'),
-    address: { street: 'Jl. Sudirman 1', city: 'Jakarta', region: 'DKI', postalCode: '10220' },
+    address: { street: 'Jl. Setrasari 1', city: 'Bandung', region: 'Jabar', postalCode: '40152' },
   };
+  const labels = { phone: 'Phone', mobile: 'Mobile', email: 'Email', instagram: 'Instagram' };
 
   test('telHref hanya menyisakan angka dan +', () => {
     expect(telHref('+62 (21) 000-0000')).toBe('tel:+62210000000');
   });
 
+  test('instagramHandle', () => {
+    expect(instagramHandle('https://www.instagram.com/impalaakbarindo/')).toBe('@impalaakbarindo');
+  });
+
   test('contactDetails', () => {
-    expect(
-      contactDetails(contact, { phone: 'Phone', email: 'Email', hours: 'Hours' }, 'en'),
-    ).toEqual([
-      { label: 'Phone', value: '+62 21 000 0000', href: 'tel:+62210000000' },
+    const social = [{ name: 'Instagram', url: 'https://www.instagram.com/contoh/' }];
+    expect(contactDetails(contact, social, labels)).toEqual([
+      { label: 'Phone', value: '+62 22 8202 7114', href: 'tel:+622282027114' },
+      { label: 'Mobile', value: '+62 813 2121 2110 (Agung)', href: 'tel:+6281321212110' },
       { label: 'Email', value: 'info@example.co.id', href: 'mailto:info@example.co.id' },
-      { label: 'Hours', value: 'Monday – Friday' },
+      {
+        label: 'Instagram',
+        value: '@contoh',
+        href: 'https://www.instagram.com/contoh/',
+        external: true,
+      },
+    ]);
+  });
+
+  test('contactDetails tanpa seluler & Instagram', () => {
+    const withoutMobile = { ...contact, mobile: undefined };
+    expect(contactDetails(withoutMobile, [], labels).map((d) => d.label)).toEqual([
+      'Phone',
+      'Email',
     ]);
   });
 
   test('addressLines', () => {
-    expect(addressLines(contact)).toEqual(['Jl. Sudirman 1', 'Jakarta, DKI 10220']);
+    expect(addressLines(contact)).toEqual(['Jl. Setrasari 1', 'Bandung, Jabar 40152']);
   });
 });
 

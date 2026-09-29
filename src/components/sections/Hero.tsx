@@ -1,3 +1,4 @@
+import BrandMark from '../ui/BrandMark';
 import Button from '../ui/Button';
 import ColumnLines from '../ui/ColumnLines';
 import Container from '../ui/Container';
@@ -12,7 +13,7 @@ export type HeroProps = {
   lead: string;
   primary: Action;
   secondary?: Action;
-  /** Keterangan singkat di kanan atas, mis. ["Didirikan 1975", "Jakarta, Indonesia"]. */
+  /** Keterangan singkat di kanan atas, mis. ["Bandung, Jawa Barat", "ISO 9001 · 14001 · 45001"]. */
   meta?: string[];
   /** Label link "scroll ke bawah". */
   scrollLabel: string;
@@ -39,8 +40,9 @@ export default function Hero({
           <div className="absolute inset-0 bg-linear-to-b from-primary-900 via-primary-950 to-primary-950" />
           <div
             data-parallax
-            className="absolute -top-1/3 -right-1/4 aspect-square w-3/4 rounded-full bg-white/5 blur-3xl"
+            className="absolute -top-1/3 -right-1/4 aspect-square w-3/4 rounded-full bg-accent-700/20 blur-3xl"
           />
+          <BrandMark className="absolute -right-24 -bottom-8 hidden h-5/6 w-auto text-white/4 md:block" />
         </div>
         <NusantaraPattern fade="right" />
         <ColumnLines />

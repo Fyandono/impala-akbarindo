@@ -5,7 +5,7 @@ import { readdirSync, readFileSync } from 'node:fs';
 import { join, relative } from 'node:path';
 
 const root = process.cwd();
-const targets = ['src/components', 'src/pages', 'src/layouts', '.design-sync/previews'];
+const targets = ['src/components', 'src/pages', 'src/layouts'];
 const extensions = ['.astro', '.tsx', '.ts'];
 
 const rules = [
@@ -23,8 +23,8 @@ const rules = [
     name: 'warna hex langsung',
     hint: 'pakai token warna (bg-primary-900, text-accent-500, …)',
     pattern: /#[0-9a-fA-F]{3,8}\b/g,
-    // Preview memakai gambar SVG data-URI; theme-color <meta> wajib hex.
-    skip: (file, line) => file.startsWith('.design-sync/') || /name="theme-color"/.test(line),
+    // theme-color <meta> wajib hex.
+    skip: (file, line) => /name="theme-color"/.test(line),
   },
   {
     name: 'atribut style inline',

@@ -17,7 +17,7 @@ export default defineConfig({
   ],
   webServer: {
     command: 'npx astro preview --port 4321 --ignore-lock',
-    url: 'http://localhost:4321/id',
+    url: 'http://localhost:4321/',
     reuseExistingServer: !process.env.CI,
   },
 });

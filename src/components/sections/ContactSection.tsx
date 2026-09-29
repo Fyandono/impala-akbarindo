@@ -1,4 +1,3 @@
-import type { ResponsiveImage } from '../types';
 import Button from '../ui/Button';
 import Section from '../ui/Section';
 import SectionHeading from '../ui/SectionHeading';
@@ -8,6 +7,8 @@ export type ContactDetail = {
   value: string;
   /** Mis. `tel:+62…` atau `mailto:…`. */
   href?: string;
+  /** Link ke situs lain (dibuka di tab baru). */
+  external?: boolean;
 };
 
 export type ContactSectionProps = {
@@ -23,13 +24,13 @@ export type ContactSectionProps = {
   legalName: string;
   addressLines: string[];
   details: ContactDetail[];
-  /** Peta statis + link ke layanan peta (tanpa iframe → tanpa cookie pihak ketiga). */
-  map: { image: ResponsiveImage; href: string; label: string };
+  /** Peta tertanam (iframe Google Maps) + link untuk membuka di aplikasi peta. */
+  map: { embedUrl: string; title: string; href: string; label: string };
   /** Teks tersembunyi untuk link yang membuka tab baru. */
   opensInNewTabLabel: string;
 };
 
-/** Kontak kantor pusat: alamat, telepon/email/jam, dan peta statis. Tanpa form. */
+/** Kontak kantor: alamat, telepon/email/sosial, dan peta tertanam. Tanpa form. */
 export default function ContactSection({
   id,
   titleId = `${id ?? 'contact'}-title`,
@@ -70,8 +71,13 @@ export default function ContactSection({
                 <dt className="text-small font-semibold text-neutral-500">{detail.label}</dt>
                 <dd className="sm:col-span-2">
                   {detail.href ? (
-                    <a href={detail.href} className="break-all text-primary-700 hover:underline">
+                    <a
+                      href={detail.href}
+                      className="break-all text-primary-700 hover:underline"
+                      {...(detail.external && { target: '_blank', rel: 'noopener noreferrer' })}
+                    >
                       {detail.value}
+                      {detail.external && <span className="sr-only"> {opensInNewTabLabel}</span>}
                     </a>
                   ) : (
                     detail.value
@@ -84,22 +90,16 @@ export default function ContactSection({
       </div>
 
       <div className="lg:col-span-6 lg:col-start-7 lg:pt-16" data-reveal>
-        <a
-          href={map.href}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="group block overflow-hidden rounded-card border border-neutral-200"
-        >
-          <img
-            {...map.image}
+        <div className="aspect-square overflow-hidden rounded-card border border-neutral-200 bg-neutral-100 sm:aspect-landscape lg:aspect-square">
+          <iframe
+            src={map.embedUrl}
+            title={map.title}
             loading="lazy"
-            decoding="async"
-            className="w-full transition-transform duration-700 group-hover:scale-102"
+            referrerPolicy="strict-origin-when-cross-origin"
+            allowFullScreen
+            className="size-full border-0"
           />
-          <span className="sr-only">
-            {map.label} {opensInNewTabLabel}
-          </span>
-        </a>
+        </div>
         <Button
           href={map.href}
           variant="secondary"

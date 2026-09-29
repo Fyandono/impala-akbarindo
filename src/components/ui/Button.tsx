@@ -13,7 +13,7 @@ const variants: Record<ButtonVariant, string> = {
   primary: 'bg-primary-900 text-white hover:bg-primary-700',
   secondary: 'border border-primary-900 text-primary-900 hover:bg-primary-900 hover:text-white',
   'ghost-light': 'border border-white/40 text-white hover:border-white hover:bg-white/10',
-  accent: 'bg-accent-300 text-primary-950 hover:bg-white',
+  accent: 'bg-accent-700 text-white hover:bg-accent-600',
 };
 
 /** Link bergaya tombol dengan panah. Situs statis: selalu `<a>`, tidak ada tombol submit. */

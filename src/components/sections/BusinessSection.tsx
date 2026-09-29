@@ -14,7 +14,7 @@ export type BusinessSectionProps = {
   cards: BusinessCardProps[];
 };
 
-/** Grid lini bisnis / portofolio. */
+/** Grid lini layanan / bisnis. */
 export default function BusinessSection({
   id,
   titleId = `${id ?? 'business'}-title`,
@@ -27,7 +27,7 @@ export default function BusinessSection({
   return (
     <Section id={id} tone="muted" labelledBy={titleId}>
       <SectionHeading id={titleId} index={index} eyebrow={eyebrow} title={title} lead={lead} />
-      <div className="mt-16 grid gap-x-8 gap-y-14 sm:grid-cols-2 lg:grid-cols-4" data-reveal-group>
+      <div className="mt-16 grid gap-x-6 gap-y-14 sm:grid-cols-2 lg:grid-cols-5" data-reveal-group>
         {cards.map((card) => (
           <BusinessCard key={card.title} {...card} />
         ))}

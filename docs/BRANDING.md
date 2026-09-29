@@ -45,7 +45,7 @@ Juga di blok `@theme` di `global.css` — ubah nilainya, jangan namanya:
 
 ## 5. Motif latar
 
-Section gelap memakai motif kawung (`src/components/ui/NusantaraPattern.tsx`). Untuk klien dengan motif khas (mis. ornamen daerah atau geometri dari logo), ganti isi `<pattern>` di komponen tersebut; gunakan `stroke="currentColor"` agar warnanya mengikuti token.
+Section gelap memakai motif garis miring tipis yang mengikuti kaki huruf "A" pada logo (`src/components/ui/NusantaraPattern.tsx`). Untuk klien dengan motif khas (mis. ornamen daerah atau geometri dari logo), ganti isi `<pattern>` di komponen tersebut; gunakan `stroke="currentColor"` agar warnanya mengikuti token.
 
 ## 6. Gambar hero (opsional)
 

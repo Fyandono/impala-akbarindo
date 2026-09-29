@@ -21,7 +21,7 @@ export type FooterProps = {
   phoneLabel: string;
   email: string;
   emailLabel: string;
-  /** Baris hak cipta lengkap, mis. "© 2026 PT Contoh (Persero). Hak cipta dilindungi." */
+  /** Baris hak cipta lengkap, mis. "© 2026 PT Contoh. Hak cipta dilindungi." */
   copyright: string;
   legalNav: Link[];
   /** Jika diisi, tampilkan tombol pengaturan cookie (`data-cookie-settings`). */

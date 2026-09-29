@@ -12,23 +12,24 @@
   /* Serif editorial untuk judul besar (h1, h2, pernyataan). */
   --font-serif: 'Newsreader Variable', ui-serif, Georgia, serif;
 
-  --color-primary-50: #fafafa;
-  --color-primary-100: #f5f5f5;
-  --color-primary-200: #e5e5e5;
-  --color-primary-300: #d4d4d4;
-  --color-primary-400: #a3a3a3;
-  --color-primary-500: #737373;
-  --color-primary-600: #525252;
-  --color-primary-700: #404040;
-  --color-primary-800: #262626;
-  --color-primary-900: #171717;
-  --color-primary-950: #0a0a0a;
+  /* Brand PT Impala Akbarindo: arang hangat (hitam logo) + merah marun logo (#9D191E). */
+  --color-primary-50: #f8f6f6;
+  --color-primary-100: #f0ecec;
+  --color-primary-200: #e0d9d9;
+  --color-primary-300: #c4baba;
+  --color-primary-400: #9a8e8f;
+  --color-primary-500: #716667;
+  --color-primary-600: #564c4d;
+  --color-primary-700: #3f3637;
+  --color-primary-800: #2b2324;
+  --color-primary-900: #1d1718;
+  --color-primary-950: #120d0e;
 
-  --color-accent-300: #e5e5e5;
-  --color-accent-400: #d4d4d4;
-  --color-accent-500: #a3a3a3;
-  --color-accent-600: #737373;
-  --color-accent-700: #525252; /* aksen untuk teks kecil di latar terang (kontras ≥ 4.5:1) */
+  --color-accent-300: #f5c6c8;
+  --color-accent-400: #f08a8e; /* aksen teks di latar gelap */
+  --color-accent-500: #e2454c;
+  --color-accent-600: #b91f26;
+  --color-accent-700: #9d191e; /* merah logo; aksen teks kecil di latar terang (kontras 8:1) */
 
   /* Sudut tegas = kesan formal. */
   --radius-card: 0.125rem;

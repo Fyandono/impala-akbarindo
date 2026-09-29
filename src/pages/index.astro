@@ -1,0 +1,112 @@
+---
+import AboutIntro from '../components/sections/AboutIntro.tsx';
+import BusinessSection from '../components/sections/BusinessSection.tsx';
+import ContactSection from '../components/sections/ContactSection.tsx';
+import ExperienceSection from '../components/sections/ExperienceSection.tsx';
+import GallerySection from '../components/sections/GallerySection.tsx';
+import Hero from '../components/sections/Hero.tsx';
+import LegalitySection from '../components/sections/LegalitySection.tsx';
+import ManagementSection from '../components/sections/ManagementSection.tsx';
+import NewsSection from '../components/sections/NewsSection.tsx';
+import OperationsSection from '../components/sections/OperationsSection.tsx';
+import ProseSection from '../components/sections/ProseSection.astro';
+import StatsBand from '../components/sections/StatsBand.tsx';
+import ValuesGrid from '../components/sections/ValuesGrid.tsx';
+import VisionMission from '../components/sections/VisionMission.tsx';
+import { sectionHref, sectionIndex } from '../config/navigation';
+import { site } from '../config/site';
+import { dict } from '../i18n';
+import { loadAbout } from '../lib/sections/about';
+import { loadBusiness } from '../lib/sections/business';
+import { loadContact } from '../lib/sections/contact';
+import { loadExperience } from '../lib/sections/experience';
+import { loadGallery } from '../lib/sections/gallery';
+import { loadLegality } from '../lib/sections/legality';
+import { loadManagement } from '../lib/sections/management';
+import { loadNews } from '../lib/sections/news';
+import { loadOperations } from '../lib/sections/operations';
+import { loadProseSections } from '../lib/sections/prose';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+/**
+ * Halaman utama one-page — hanya komposisi. Data tiap section disiapkan di src/lib/sections/;
+ * `id` & nomor section berasal dari menu (src/config/navigation.ts). Section opsional mengikuti
+ * `site.features`.
+ */
+const { home } = dict;
+
+const [
+  about,
+  business,
+  operations,
+  experience,
+  management,
+  legality,
+  gallery,
+  proseSections,
+  news,
+  contact,
+] = await Promise.all([
+  loadAbout(),
+  loadBusiness(),
+  loadOperations(),
+  loadExperience(),
+  loadManagement(),
+  loadLegality(),
+  site.features.gallery ? loadGallery() : undefined,
+  loadProseSections(),
+  site.features.news ? loadNews() : undefined,
+  loadContact(),
+]);
+const heroMeta = [
+  ...(site.foundingYear ? [`${home.heroEstablished} ${site.foundingYear}`] : []),
+  home.heroLocation,
+  home.heroCertified,
+];
+---
+
+<BaseLayout>
+  <Hero
+    eyebrow={home.heroEyebrow}
+    title={home.heroTitle}
+    lead={home.heroLead}
+    primary={{ label: home.heroPrimary, href: sectionHref('services') }}
+    secondary={{ label: home.heroSecondary, href: sectionHref('contact') }}
+    meta={heroMeta}
+    scrollLabel={dict.common.scrollDown}
+  />
+
+  <div id="about">
+    <AboutIntro index={sectionIndex('about')} {...about.intro} />
+    <StatsBand {...about.stats} />
+    <VisionMission {...about.visionMission} />
+    <ValuesGrid {...about.values} />
+  </div>
+
+  <BusinessSection id="services" index={sectionIndex('services')} {...business} />
+
+  <OperationsSection id="operations" index={sectionIndex('operations')} {...operations} />
+
+  <ExperienceSection id="experience" index={sectionIndex('experience')} {...experience} />
+
+  <ManagementSection id="management" index={sectionIndex('management')} {...management} />
+
+  <LegalitySection id="legality" index={sectionIndex('legality')} {...legality} />
+
+  {gallery && <GallerySection id="gallery" index={sectionIndex('gallery')} {...gallery} />}
+
+  {proseSections.map(({ key, Content, ...section }, i) => (
+    <ProseSection
+      id={key}
+      index={sectionIndex(key)}
+      tone={i % 2 === 1 ? 'muted' : 'light'}
+      {...section}
+    >
+      <Content />
+    </ProseSection>
+  ))}
+
+  {news && <NewsSection id="news" index={sectionIndex('news')} {...news} />}
+
+  <ContactSection id="contact" index={sectionIndex('contact')} {...contact} />
+</BaseLayout>

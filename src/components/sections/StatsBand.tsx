@@ -11,7 +11,7 @@ export type StatsBandProps = {
   /** Judul section, tampil sebagai label kecil ala laporan tahunan. */
   title: string;
   stats: Stat[];
-  /** Locale BCP 47 untuk format angka, mis. "id" atau "en". */
+  /** Locale BCP 47 untuk format angka, mis. "id". */
   locale: string;
   /** Catatan sumber/periode data, mis. "Data per 31 Desember 2025". */
   note?: string;

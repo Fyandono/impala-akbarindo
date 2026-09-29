@@ -12,16 +12,9 @@ export default defineConfig({
   site: SITE_URL,
   trailingSlash: 'never',
   build: { format: 'file' },
-  redirects: { '/': '/id' },
   // Shiki memakai inline style yang bertentangan dengan CSP; situs ini tidak menampilkan blok kode.
   markdown: { syntaxHighlight: false },
-  integrations: [
-    sitemap({
-      filter: (page) => !page.endsWith('/404') && page !== `${SITE_URL}/`,
-      i18n: { defaultLocale: 'id', locales: { id: 'id-ID', en: 'en-US' } },
-    }),
-    react(),
-  ],
+  integrations: [sitemap({ filter: (page) => !page.endsWith('/404') }), react()],
   security: {
     // Astro menambahkan hash untuk setiap script & style yang dirender ke <meta http-equiv="Content-Security-Policy">.
     // Header yang tidak didukung di <meta> (mis. frame-ancestors) diatur di firebase.json.
@@ -31,6 +24,8 @@ export default defineConfig({
         "img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com",
         "connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com",
         "font-src 'self'",
+        // Peta kantor di section Kontak (iframe Google Maps).
+        'frame-src https://www.google.com',
         "base-uri 'self'",
         "form-action 'none'",
         "object-src 'none'",

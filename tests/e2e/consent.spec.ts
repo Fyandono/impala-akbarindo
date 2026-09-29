@@ -18,7 +18,7 @@ test.beforeEach(async ({ page }) => {
   await page.addInitScript(() =>
     Object.defineProperty(navigator, 'webdriver', { get: () => false }),
   );
-  await page.goto('/id');
+  await page.goto('/');
   const enabled = await page.locator('#consent-config').count();
   test.skip(enabled === 0, 'Analytics nonaktif pada build ini');
 });

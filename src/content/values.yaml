@@ -1,36 +1,24 @@
-- id: amanah
+- id: sdm-andal
   order: 1
-  title: { id: Amanah, en: Trustworthy }
-  description:
-    id: Memegang teguh kepercayaan yang diberikan.
-    en: We hold firmly to the trust placed in us.
-- id: kompeten
+  title: SDM andal & bertanggung jawab
+  description: Tenaga ahli dari berbagai bidang ilmu, direkrut dan dibina untuk bekerja profesional di setiap penempatan.
+- id: pengawasan-berlapis
   order: 2
-  title: { id: Kompeten, en: Competent }
-  description:
-    id: Terus belajar dan mengembangkan kapabilitas.
-    en: We keep learning and developing our capabilities.
-- id: harmonis
+  title: Pengawasan berlapis
+  description: Kontrol harian oleh team leader atau danru, ditambah kunjungan supervisor dan koordinator dua kali seminggu.
+- id: pelatihan-berkala
   order: 3
-  title: { id: Harmonis, en: Harmonious }
-  description:
-    id: Saling peduli dan menghargai perbedaan.
-    en: We care for one another and respect differences.
-- id: loyal
+  title: Pelatihan berkala
+  description: Pelatihan dasar setiap bulan dan team building setiap dua bulan oleh trainer internal perusahaan.
+- id: disiplin
   order: 4
-  title: { id: Loyal, en: Loyal }
-  description:
-    id: Berdedikasi dan mengutamakan kepentingan bangsa dan negara.
-    en: We are dedicated and put the interests of the nation first.
-- id: adaptif
+  title: Disiplin & taat aturan
+  description: Kami menjamin personel tetap disiplin dan taat pada aturan yang berlaku di lingkungan kerja klien.
+- id: tersertifikasi
   order: 5
-  title: { id: Adaptif, en: Adaptive }
-  description:
-    id: Terus berinovasi dan antusias menghadapi perubahan.
-    en: We keep innovating and embrace change with enthusiasm.
-- id: kolaboratif
+  title: Tersertifikasi
+  description: Bersertifikat ISO 9001, ISO 14001, dan ISO 45001, dengan personel yang mengikuti uji kompetensi BNSP.
+- id: hasil-terkontrol
   order: 6
-  title: { id: Kolaboratif, en: Collaborative }
-  description:
-    id: Membangun kerja sama yang sinergis.
-    en: We build synergistic collaboration.
+  title: Hasil yang terkontrol
+  description: Setiap pekerjaan dicatat dan dievaluasi sehingga klien mendapat jaminan hasil yang memuaskan.

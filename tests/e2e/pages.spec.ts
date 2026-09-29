@@ -16,8 +16,7 @@ for (const route of routes) {
       const response = await page.goto(route);
       expect(response?.status()).toBe(200);
 
-      const lang = route.split('/')[1];
-      await expect(page.locator('html')).toHaveAttribute('lang', lang!);
+      await expect(page.locator('html')).toHaveAttribute('lang', 'id');
       await expect(page).toHaveTitle(/.+/);
       await expect(page.locator('h1')).toHaveCount(1);
       await expect(page.locator('meta[name="description"]')).toHaveAttribute('content', /.+/);

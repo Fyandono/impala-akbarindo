@@ -4,11 +4,10 @@
  * `data-section-link` dibaca scroll-spy di src/scripts/header.ts untuk `aria-current`.
  */
 import { mainNav, sectionHref } from '../../config/navigation';
-import { t, type Locale } from '../../i18n';
+import { dict } from '../../i18n';
 
-type Props = { lang: Locale; variant: 'bar' | 'drawer'; class?: string };
-const { lang, variant, class: className } = Astro.props;
-const dict = t(lang);
+type Props = { variant: 'bar' | 'drawer'; class?: string };
+const { variant, class: className } = Astro.props;
 
 const styles = {
   bar: {
@@ -26,7 +25,7 @@ const styles = {
   <ul class={styles.list}>
     {mainNav.map((item) => (
       <li>
-        <a href={sectionHref(lang, item.id)} data-section-link={item.id} class={styles.link}>
+        <a href={sectionHref(item.id)} data-section-link={item.id} class={styles.link}>
           {dict.nav[item.key]}
         </a>
       </li>

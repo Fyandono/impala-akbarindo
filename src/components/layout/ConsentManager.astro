@@ -1,9 +1,8 @@
 ---
-import { localizedPath, t, type Locale } from '../../i18n';
+import { dict } from '../../i18n';
 
-type Props = { lang: Locale; measurementId: string };
-const { lang, measurementId } = Astro.props;
-const dict = t(lang);
+type Props = { measurementId: string };
+const { measurementId } = Astro.props;
 ---
 
 <div
@@ -11,7 +10,7 @@ const dict = t(lang);
   hidden
   data-ga-id={measurementId}
   data-strings={JSON.stringify(dict.consent)}
-  data-cookies-url={localizedPath(lang, '/cookies')}
+  data-cookies-url="/cookies"
   data-cookies-label={dict.nav.cookies}
 ></div>
 

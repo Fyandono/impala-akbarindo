@@ -11,10 +11,10 @@ function walk(dir: string): string[] {
   });
 }
 
-/** Semua halaman hasil build (kecuali redirect root & 404), mis. `/id/about`. */
+/** Semua halaman hasil build (kecuali 404), mis. `/` dan `/privacy`. */
 export const routes = walk(DIST)
-  .map((file) => `/${relative(DIST, file).replace(/\.html$/, '')}`)
-  .filter((route) => route !== '/index' && route !== '/404')
+  .map((file) => `/${relative(DIST, file).replace(/\.html$/, '')}`.replace(/^\/index$/, '/'))
+  .filter((route) => route !== '/404')
   .sort();
 
 export const routeSet = new Set(routes);

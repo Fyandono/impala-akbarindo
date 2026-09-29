@@ -40,7 +40,7 @@ Aturan:
 - GA4 **tidak dimuat** sebelum pengunjung menyetujui kategori analytics (diuji di `tests/e2e/consent.spec.ts`).
 - Google Signals & personalisasi iklan dimatikan; Consent Mode v2 `ad_*` = denied.
 - Menarik persetujuan menghapus cookie `_ga*`.
-- Peta di halaman Kontak berupa gambar statis + tautan (tanpa iframe Google Maps).
+- Peta di section Kontak berupa iframe Google Maps (`frame-src https://www.google.com`), `loading="lazy"`. Google dapat menerima IP & data teknis peramban saat peta dimuat; hal ini disebutkan di halaman Kebijakan Privasi & Cookie. Bila ingin tanpa pihak ketiga sama sekali, ganti dengan gambar statis + tautan.
 
 ## Dependency
 
@@ -61,6 +61,7 @@ Aturan:
 
 ## Pihak ketiga
 
-| Layanan                                                             | Tujuan               | Kapan dimuat              |
-| ------------------------------------------------------------------- | -------------------- | ------------------------- |
-| Google Analytics 4 (`googletagmanager.com`, `google-analytics.com`) | Statistik pengunjung | Setelah consent analytics |
+| Layanan                                                             | Tujuan                        | Kapan dimuat                                           |
+| ------------------------------------------------------------------- | ----------------------------- | ------------------------------------------------------ |
+| Google Analytics 4 (`googletagmanager.com`, `google-analytics.com`) | Statistik pengunjung          | Setelah consent analytics                              |
+| Google Maps embed (`www.google.com`, iframe)                        | Peta kantor di section Kontak | Saat section Kontak mendekati layar (`loading="lazy"`) |

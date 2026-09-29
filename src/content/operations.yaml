@@ -1,0 +1,38 @@
+- id: kebersihan
+  order: 1
+  title: Jasa Kebersihan
+  goals:
+    - Menjadikan SDM yang andal dan bertanggung jawab.
+    - Menjamin hasil yang memuaskan dengan selalu mengontrol hasil pekerjaan.
+    - Menjamin petugas kebersihan yang disiplin dan taat pada aturan.
+    - Memberi kesempatan personel mengikuti pelatihan BNSP dasar cleaning service.
+  routines:
+    - frequency: Setiap pagi
+      description: Briefing dan pengarahan dari team leader sebelum pekerjaan dimulai.
+    - frequency: Setiap hari
+      description: Team leader mengontrol setiap gedung dan area tanggung jawab, lalu mencentang ceklis kegiatan petugas.
+    - frequency: Dua kali seminggu
+      description: Supervisor perusahaan berkunjung untuk evaluasi kerja dan menjaga hubungan baik dengan klien.
+    - frequency: Setiap bulan
+      description: Training dasar cleaning service oleh trainer PT Impala Akbarindo.
+    - frequency: Setiap dua bulan
+      description: Team building bersama trainer perusahaan.
+- id: keamanan
+  order: 2
+  title: Jasa Keamanan
+  goals:
+    - Menjadikan SDM yang andal dan bertanggung jawab.
+    - Memberi rasa aman kepada pengguna dengan patroli rutin dan selalu siap siaga.
+    - Menjamin anggota keamanan yang taat aturan dan disiplin dalam bekerja.
+    - Memberi kesempatan anggota mengikuti pelatihan dasar Gada Pratama.
+  routines:
+    - frequency: Setiap pagi
+      description: Apel pagi wajib untuk seluruh anggota keamanan.
+    - frequency: Setiap hari
+      description: Danru mengontrol area dan mencatat hasilnya di buku laporan yang telah disiapkan.
+    - frequency: Dua kali seminggu
+      description: Koordinator perusahaan berkunjung untuk koordinasi dengan klien dan pengarahan disiplin kepada anggota.
+    - frequency: Setiap bulan
+      description: Pelatihan dasar keamanan seperti peraturan baris-berbaris, senam tongkat, dan senam borgol.
+    - frequency: Setiap dua bulan
+      description: Team building bersama tim trainer perusahaan.

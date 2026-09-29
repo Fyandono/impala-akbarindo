@@ -1,13 +1,17 @@
-import { localizedPath, type Dictionary, type Locale } from '../i18n';
+import type { Dictionary } from '../i18n';
 import { site, type FeatureKey } from './site';
 
-/** Section di halaman utama (one-page). `id` dipakai sebagai anchor: `/id#about`. */
+/** Section di halaman utama (one-page). `id` dipakai sebagai anchor: `/#about`. */
 export type SectionNavItem = { key: keyof Dictionary['nav']; id: string; feature?: FeatureKey };
 
 const sections: SectionNavItem[] = [
   { key: 'about', id: 'about' },
+  { key: 'services', id: 'services' },
+  { key: 'operations', id: 'operations' },
+  { key: 'experience', id: 'experience' },
   { key: 'management', id: 'management' },
-  { key: 'business', id: 'business' },
+  { key: 'legality', id: 'legality' },
+  { key: 'gallery', id: 'gallery', feature: 'gallery' },
   { key: 'governance', id: 'governance', feature: 'governance' },
   { key: 'sustainability', id: 'sustainability', feature: 'sustainability' },
   { key: 'news', id: 'news', feature: 'news' },
@@ -17,7 +21,7 @@ const sections: SectionNavItem[] = [
 export const mainNav = sections.filter((item) => !item.feature || site.features[item.feature]);
 
 /** Link ke section; bekerja dari halaman mana pun (mis. dari halaman legal kembali ke beranda). */
-export const sectionHref = (lang: Locale, id: string) => `${localizedPath(lang)}#${id}`;
+export const sectionHref = (id: string) => `/#${id}`;
 
 /** Nomor urut section ("01", "02", …) mengikuti urutan menu yang aktif. */
 export const sectionIndex = (id: string) =>

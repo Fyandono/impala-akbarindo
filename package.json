@@ -10,7 +10,7 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "check": "astro check && tsc -p .design-sync/previews",
+    "check": "astro check",
     "lint": "eslint . && prettier --check . && node scripts/check-design-tokens.mjs",
     "format": "prettier --write .",
     "test": "npm run test:unit && npm run test:e2e",

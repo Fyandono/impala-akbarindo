@@ -1,26 +1,29 @@
 {
   "meta": {
-    "defaultDescription": "Profil resmi perusahaan: tentang kami, manajemen, lini bisnis, dan informasi kontak."
+    "defaultDescription": "PT Impala Akbarindo — perusahaan jasa outsourcing di Bandung: kebersihan, keamanan, sewa kendaraan, tenaga alih daya, dan perawatan bangunan."
   },
   "nav": {
     "home": "Beranda",
     "about": "Tentang Kami",
     "management": "Manajemen",
-    "business": "Bisnis",
     "governance": "Tata Kelola",
     "sustainability": "Keberlanjutan",
     "news": "Berita",
     "contact": "Kontak",
     "privacy": "Kebijakan Privasi",
     "cookies": "Kebijakan Cookie",
-    "terms": "Syarat Penggunaan"
+    "terms": "Syarat Penggunaan",
+    "services": "Layanan",
+    "operations": "Standar Kerja",
+    "experience": "Pengalaman",
+    "legality": "Legalitas",
+    "gallery": "Dokumentasi"
   },
   "common": {
     "skipToContent": "Lompat ke konten utama",
     "mainNav": "Navigasi utama",
     "openMenu": "Buka menu",
     "closeMenu": "Tutup menu",
-    "language": "Bahasa",
     "breadcrumb": "Breadcrumb",
     "cookieSettings": "Pengaturan Cookie",
     "followUs": "Ikuti kami",
@@ -30,60 +33,63 @@
     "scrollDown": "Gulir ke bawah"
   },
   "home": {
-    "heroEyebrow": "Badan Usaha Milik Negara",
-    "heroTitle": "Membangun nilai berkelanjutan untuk Indonesia",
-    "heroLead": "Kami mengelola aset strategis negara secara profesional, transparan, dan akuntabel untuk memberikan manfaat terbaik bagi masyarakat dan pemangku kepentingan.",
-    "heroPrimary": "Tentang Kami",
-    "heroSecondary": "Lini Bisnis",
-    "heroEstablished": "Didirikan",
-    "heroLocation": "Jakarta, Indonesia",
+    "heroEyebrow": "Jasa Outsourcing Profesional",
+    "heroTitle": "Layanan alih daya yang bersih, aman, dan dapat diandalkan",
+    "heroLead": "Kebersihan, keamanan, sewa kendaraan, tenaga alih daya, dan perawatan bangunan — dikerjakan SDM terlatih dengan pengawasan rutin untuk instansi pemerintah dan swasta.",
+    "heroPrimary": "Lihat Layanan",
+    "heroSecondary": "Hubungi Kami",
+    "heroLocation": "Bandung, Jawa Barat",
     "statsTitle": "Perusahaan dalam angka",
-    "statsNote": "Data per 31 Desember 2025"
+    "statsNote": "Berdasarkan portofolio kontrak dalam company profile perusahaan",
+    "heroCertified": "ISO 9001 · 14001 · 45001",
+    "heroEstablished": "Didirikan"
   },
   "about": {
-    "title": "Lima dekade berkontribusi bagi pembangunan nasional",
-    "lead": "Sejak didirikan, perusahaan terus bertransformasi menjadi entitas yang tangguh dan adaptif. Dengan tata kelola yang baik dan inovasi berkelanjutan, kami menjalankan peran sebagai agen pembangunan sekaligus penciptaan nilai ekonomi.",
+    "title": "Mitra outsourcing yang profesional dan dapat diandalkan",
+    "lead": "PT Impala Akbarindo adalah perusahaan pelayanan jasa outsourcing yang bergerak di bidang kebersihan, keamanan, sewa kendaraan, tenaga alih daya, dan perawatan bangunan.",
     "body": [
-      "Perusahaan merupakan Badan Usaha Milik Negara yang bergerak di sektor strategis nasional. Kami berperan menjalankan kegiatan usaha yang mendukung kebijakan pemerintah sekaligus menghasilkan nilai ekonomi yang berkelanjutan.",
-      "Didukung oleh insan-insan profesional dan jaringan operasi di seluruh Indonesia, kami berkomitmen menerapkan prinsip tata kelola perusahaan yang baik dalam setiap aspek bisnis."
+      "Kami berkomitmen memberikan layanan unggul secara profesional dengan dukungan tenaga ahli dari berbagai bidang ilmu, sehingga dapat menghasilkan kualitas terbaik.",
+      "Dari kantor kami di Bandung, kami telah dipercaya menangani pekerjaan untuk pemerintah provinsi, rumah sakit, lembaga pendidikan, dan instansi vertikal di Jawa Barat."
     ],
-    "visionTitle": "Visi",
-    "vision": "Menjadi perusahaan kelas dunia yang menjadi kebanggaan bangsa dan memberi nilai tambah bagi Indonesia.",
+    "visionTitle": "Komitmen Kami",
+    "vision": "Layanan unggul yang dikerjakan secara profesional, untuk hasil terbaik bagi setiap klien.",
     "missionTitle": "Misi",
     "mission": [
-      "Menyediakan produk dan layanan berkualitas yang memberikan manfaat bagi masyarakat.",
-      "Mengelola bisnis secara profesional, efisien, dan berorientasi pada pertumbuhan berkelanjutan.",
-      "Mengembangkan sumber daya manusia yang unggul dan berintegritas.",
-      "Berkontribusi pada pembangunan nasional dan kesejahteraan lingkungan sekitar."
+      "Menjadikan SDM yang andal dan bertanggung jawab.",
+      "Memberikan jaminan hasil yang memuaskan kepada klien dengan selalu mengontrol hasil pekerjaan.",
+      "Memberikan jaminan kepada klien agar SDM tetap disiplin dan taat kepada aturan.",
+      "Memberikan kesempatan kepada tenaga alih daya untuk mengikuti uji kompetensi sesuai tugas pokok dan fungsi."
     ],
-    "valuesEyebrow": "Nilai Perusahaan",
-    "valuesTitle": "Nilai-nilai yang kami pegang",
-    "historyEyebrow": "Sejarah",
-    "historyTitle": "Perjalanan kami"
+    "valuesEyebrow": "Keunggulan",
+    "valuesTitle": "Mengapa memilih kami"
   },
   "management": {
-    "title": "Dipimpin oleh jajaran profesional yang berpengalaman dan berintegritas.",
+    "title": "Struktur organisasi PT Impala Akbarindo",
     "commissioners": "Dewan Komisaris",
     "directors": "Direksi",
-    "viewProfile": "Lihat profil"
+    "viewProfile": "Lihat profil",
+    "managers": "Manajer",
+    "divisions": "Kepala Bidang",
+    "staff": "Staf"
   },
   "business": {
-    "title": "Portofolio yang menopang perekonomian",
-    "lead": "Portofolio usaha yang saling terintegrasi untuk menciptakan nilai bagi negara."
+    "title": "Lima lini layanan dalam satu mitra",
+    "lead": "Satu mitra untuk kebutuhan operasional gedung dan tenaga pendukung Anda."
   },
   "news": {
     "title": "Berita & siaran pers",
     "empty": "Belum ada berita."
   },
   "contact": {
-    "title": "Mari berkolaborasi membangun negeri",
-    "lead": "Hubungi kami untuk informasi lebih lanjut mengenai perusahaan dan peluang kerja sama.",
-    "office": "Kantor Pusat",
+    "title": "Diskusikan kebutuhan tenaga alih daya Anda",
+    "lead": "Hubungi kami untuk penawaran, informasi layanan, atau peluang kerja sama.",
+    "office": "Kantor",
     "phone": "Telepon",
     "email": "Email",
-    "hours": "Jam Operasional",
-    "openMaps": "Buka di Google Maps",
-    "mapAlt": "Ilustrasi peta lokasi kantor pusat"
+    "mobile": "Seluler",
+    "instagram": "Instagram",
+    "mapTitle": "Peta lokasi kantor PT Impala Akbarindo",
+    "openMaps": "Buka di Google Maps"
   },
   "notFound": {
     "title": "Halaman tidak ditemukan",
@@ -104,5 +110,40 @@
     "analyticsTitle": "Cookie analitik",
     "analyticsDescription": "Membantu kami memahami jumlah pengunjung dan halaman yang paling sering dibuka melalui Google Analytics. Data dikumpulkan secara agregat.",
     "moreInfo": "Informasi lebih lanjut ada di"
+  },
+  "operations": {
+    "title": "Rencana kerja yang terukur dan diawasi",
+    "lead": "Setiap penempatan dijalankan dengan rutinitas pengawasan dan pelatihan yang jelas, dari briefing pagi hingga team building.",
+    "goalsTitle": "Tujuan",
+    "routinesTitle": "Rencana kerja"
+  },
+  "experience": {
+    "title": "Dipercaya instansi pemerintah dan publik",
+    "lead": "Sebagian kontrak yang telah kami tangani bersama instansi di Jawa Barat.",
+    "client": "Pemberi kerja",
+    "service": "Jenis pekerjaan",
+    "value": "Nilai kontrak",
+    "total": "Total nilai kontrak",
+    "othersTitle": "Juga melayani",
+    "others": [
+      "Bapenda Kota Bandung",
+      "Bappelitbang Kota Bandung",
+      "Disdukcapil Kota Bandung",
+      "Diskominfo Kota Bandung",
+      "Distaru Kota Bandung",
+      "DPKP3 Kota Bandung",
+      "Universitas Pendidikan Indonesia",
+      "Graha Atma Kota Bandung"
+    ]
+  },
+  "legality": {
+    "title": "Legal, tersertifikasi, dan patuh regulasi",
+    "lead": "Perusahaan beroperasi dengan perizinan lengkap dan sistem manajemen bersertifikat. Salinan dokumen tersedia atas permintaan.",
+    "certifications": "Sertifikasi",
+    "permits": "Perizinan"
+  },
+  "gallery": {
+    "title": "Kegiatan kami di lapangan",
+    "lead": "Apel, pelatihan, dan pengawasan rutin personel di lokasi klien."
   }
 }

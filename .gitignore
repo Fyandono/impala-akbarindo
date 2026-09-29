@@ -11,13 +11,5 @@ test-results/
 .lighthouseci/
 .DS_Store
 
-# design-sync (Claude Design)
-.ds-sync/
-ds-bundle/
-.design-sync/.cache/
-.design-sync/learnings/
-.design-sync/node_modules
-.design-sync/pkg/dist/
-
 CLAUDE.md
 SPEC.md
