@@ -6,8 +6,6 @@ type Link = { label: string; href: string };
 export type FooterProps = {
   brandName: string;
   homeHref: string;
-  /** Label aksesibel untuk link logo ke beranda. */
-  homeLabel: string;
   tagline: string;
   legalName: string;
   addressLines: string[];
@@ -33,7 +31,7 @@ export default function Footer(props: FooterProps) {
     <footer className="bg-primary-950 text-primary-100">
       <Container className="grid gap-12 py-16 md:grid-cols-12 lg:py-20">
         <div className="md:col-span-5">
-          <a href={props.homeHref} className="inline-block text-white" aria-label={props.homeLabel}>
+          <a href={props.homeHref} className="inline-block text-white">
             <Logo name={props.brandName} />
           </a>
           <p className="mt-6 max-w-sm text-small leading-relaxed">{props.tagline}</p>

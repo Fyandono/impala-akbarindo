@@ -1,7 +1,7 @@
 # Foto dokumentasi. Cara menambah/mengganti foto:
 # 1. Taruh file foto (JPG/PNG/WebP, disarankan lebar ≥ 1600 px, rasio 4:3) di src/assets/gallery/.
 # 2. Ubah `image` di entri di bawah (path relatif dari file ini), atau tambah entri baru.
-# 3. `caption` wajib diisi; dipakai juga sebagai teks alternatif gambar.
+# 3. `caption` wajib diisi; tampil di bawah foto dan sekaligus menjadi deskripsinya untuk pembaca layar.
 # Urutan tampil mengikuti `order`.
 - id: apel-rutin
   order: 1

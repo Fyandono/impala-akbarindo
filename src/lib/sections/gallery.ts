@@ -15,9 +15,10 @@ export async function loadGallery(): Promise<SectionData<GallerySectionProps>> {
         const { caption } = data;
         return {
           caption,
+          // alt kosong: `<figcaption>` sudah mendeskripsikan foto; alt yang sama akan dibaca dua kali.
           image: await responsiveImage(
             data.image,
-            caption,
+            '',
             '(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw',
             [480, 960],
           ),
