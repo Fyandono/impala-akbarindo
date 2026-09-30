@@ -2,28 +2,28 @@
 # 1. Taruh file foto (JPG/PNG/WebP, disarankan lebar ≥ 1600 px, rasio 4:3) di src/assets/gallery/.
 # 2. Ubah `image` di entri di bawah (path relatif dari file ini), atau tambah entri baru.
 # 3. `caption` wajib diisi; dipakai juga sebagai teks alternatif gambar.
-# Urutan tampil mengikuti `order`. Hapus file placeholder-*.svg bila sudah tidak dipakai.
+# Urutan tampil mengikuti `order`.
 - id: apel-rutin
   order: 1
-  image: ../assets/gallery/placeholder-1.svg
+  image: ../assets/gallery/apel-rutin.jpg
   caption: Apel rutin anggota keamanan
 - id: pengontrolan-koordinator
   order: 2
-  image: ../assets/gallery/placeholder-2.svg
+  image: ../assets/gallery/pengontrolan-koordinator.jpg
   caption: Pengontrolan rutin oleh koordinator wilayah
 - id: pelatihan-keamanan
   order: 3
-  image: ../assets/gallery/placeholder-3.svg
+  image: ../assets/gallery/pelatihan-keamanan.jpg
   caption: Pelatihan keamanan di RS Jiwa Provinsi Jawa Barat
 - id: pembinaan-fisik
   order: 4
-  image: ../assets/gallery/placeholder-1.svg
+  image: ../assets/gallery/pembinaan-fisik.jpg
   caption: Pembinaan fisik dan mental personel
 - id: pelatihan-hidran
   order: 5
-  image: ../assets/gallery/placeholder-2.svg
+  image: ../assets/gallery/pelatihan-hidran.jpg
   caption: Pelatihan penggunaan hidran
 - id: pelatihan-cleaning-service
   order: 6
-  image: ../assets/gallery/placeholder-3.svg
+  image: ../assets/gallery/pelatihan-cleaning-service.jpg
   caption: Pelatihan dasar cleaning service
