@@ -22,7 +22,7 @@ export type ManagementSectionProps = {
 };
 
 /*
- * Di desktop (5 kolom) kelompok kecil berbagi baris: tiap kelompok selebar jumlah anggotanya,
+ * Di desktop (6 kolom) kelompok kecil berbagi baris: tiap kelompok selebar jumlah anggotanya,
  * dengan lebar kartu yang sama di semua kelompok.
  */
 const spans = {
@@ -31,6 +31,7 @@ const spans = {
   3: 'lg:col-span-3',
   4: 'lg:col-span-4',
   5: 'lg:col-span-5',
+  6: 'lg:col-span-6',
 } as const;
 const innerColumns = {
   1: 'lg:grid-cols-1',
@@ -38,6 +39,7 @@ const innerColumns = {
   3: 'lg:grid-cols-3',
   4: 'lg:grid-cols-4',
   5: 'lg:grid-cols-5',
+  6: 'lg:grid-cols-6',
 } as const;
 
 /** Struktur organisasi (komisaris, direksi, manajer, dst.), dikelompokkan dengan label bergaris. */
@@ -53,9 +55,9 @@ export default function ManagementSection({
   return (
     <Section id={id} labelledBy={titleId}>
       <SectionHeading id={titleId} index={index} eyebrow={eyebrow} title={title} />
-      <div className="mt-16 grid gap-x-6 gap-y-20 sm:gap-x-8 lg:grid-cols-5 lg:gap-x-10 lg:gap-y-24">
+      <div className="mt-16 grid gap-x-6 gap-y-20 sm:gap-x-8 lg:grid-cols-6 lg:gap-x-10 lg:gap-y-24">
         {groups.map((group) => {
-          const columns = Math.min(group.people.length, 5) as 1 | 2 | 3 | 4 | 5;
+          const columns = Math.min(group.people.length, 6) as 1 | 2 | 3 | 4 | 5 | 6;
           return (
             <div key={group.title} className={spans[columns]}>
               <h3
@@ -67,7 +69,7 @@ export default function ManagementSection({
               </h3>
               <ul
                 className={cx(
-                  'mt-10 grid grid-cols-2 gap-x-6 gap-y-14 sm:grid-cols-3 sm:gap-x-8 lg:gap-x-10 lg:gap-y-16',
+                  'mt-10 grid grid-cols-2 gap-x-6 gap-y-14 sm:grid-cols-4 sm:gap-x-8 lg:gap-x-10 lg:gap-y-16',
                   innerColumns[columns],
                 )}
                 data-reveal-group
