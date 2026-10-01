@@ -1,5 +1,9 @@
+import { cx } from '../cx';
+import type { ResponsiveImage } from '../types';
 import Container from '../ui/Container';
 import Eyebrow from '../ui/Eyebrow';
+import PhotoBackdrop from '../ui/PhotoBackdrop';
+import { backdropHostClass } from '../ui/Section';
 
 export type Stat = { value: number; label: string; suffix?: string };
 
@@ -15,6 +19,8 @@ export type StatsBandProps = {
   locale: string;
   /** Catatan sumber/periode data, mis. "Data per 31 Desember 2025". */
   note?: string;
+  /** Foto latar dekoratif (samar di latar putih). */
+  backdrop?: ResponsiveImage;
 };
 
 /**
@@ -26,18 +32,24 @@ export default function StatsBand({
   stats,
   locale,
   note,
+  backdrop,
   id,
   titleId = `${id ?? 'stats'}-title`,
 }: StatsBandProps) {
   const format = new Intl.NumberFormat(locale);
   return (
-    <section id={id} aria-labelledby={titleId} className="bg-white">
+    <section
+      id={id}
+      aria-labelledby={titleId}
+      className={cx('bg-white', backdrop && backdropHostClass)}
+    >
+      {backdrop && <PhotoBackdrop image={backdrop} tone="light" />}
       <Container className="pb-section md:pb-section-lg">
         <div className="flex flex-col gap-3 border-t border-primary-900 pt-5 sm:flex-row sm:items-baseline sm:justify-between">
           <Eyebrow as="h2" id={titleId} tone="strong" rule={false}>
             {title}
           </Eyebrow>
-          {note && <p className="text-caption text-neutral-500">{note}</p>}
+          {note && <p className="text-caption text-neutral-600">{note}</p>}
         </div>
         <dl
           className="mt-12 grid grid-cols-2 gap-y-14 lg:grid-cols-4 lg:divide-x lg:divide-neutral-200"
@@ -51,7 +63,7 @@ export default function StatsBand({
                 </span>
                 {stat.label}
               </dt>
-              <dd className="-order-1 font-serif text-figure font-light tracking-tight text-primary-900 tabular-nums md:text-figure-lg">
+              <dd className="-order-1 font-serif text-figure font-semibold tracking-tight text-primary-900 tabular-nums md:text-figure-lg">
                 <span data-counter={stat.value}>{format.format(stat.value)}</span>
                 {stat.suffix && <span className="text-accent-600">{stat.suffix}</span>}
               </dd>

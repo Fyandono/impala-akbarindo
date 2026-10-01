@@ -35,7 +35,7 @@ export const site = {
     { value: 5, label: 'Lini layanan outsourcing' },
     { value: 9, label: 'Kontrak instansi yang telah ditangani' },
     { value: 7, label: 'Dokumen legalitas & perizinan usaha' },
-    { value: 3, label: 'Sertifikasi sistem manajemen ISO' },
+    { value: 4, label: 'Sertifikasi sistem manajemen ISO' },
   ] as { value: number; suffix?: string; label: string }[],
 
   /**

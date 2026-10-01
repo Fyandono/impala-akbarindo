@@ -34,7 +34,7 @@
   /* Sudut tegas = kesan formal. */
   --radius-card: 0.125rem;
 
-  /* Hierarki tipografi: display besar & ringan, label kecil berjarak lebar. */
+  /* Hierarki tipografi: display besar & tebal (semibold), label kecil berjarak lebar. */
   --text-display: clamp(2.75rem, 1.4rem + 5.6vw, 7rem);
   --text-display--line-height: 1;
   --text-display--letter-spacing: -0.025em;
@@ -82,6 +82,7 @@
   --aspect-landscape: 3 / 2; /* kartu berita & bisnis (mobile) */
   --aspect-portrait: 3 / 4; /* foto manajemen */
   --aspect-card: 4 / 5; /* kartu bisnis (≥ sm) */
+  --aspect-document: 210 / 297; /* pindaian sertifikat/dokumen (A4) */
 
   --shadow-hairline: 0 1px 0 0 var(--color-neutral-200); /* garis bawah header saat di-scroll */
 
@@ -103,7 +104,7 @@
   h2,
   h3,
   h4 {
-    @apply font-medium text-balance text-primary-900;
+    @apply font-semibold text-balance text-primary-900;
   }
   h1,
   h2 {
@@ -467,6 +468,19 @@
 }
 @utility pattern-fade-center {
   mask-image: radial-gradient(ellipse 60% 80% at 50% 50%, black 0%, transparent 75%);
+}
+
+/*
+ * Latar foto section (komponen PhotoBackdrop; foto dibuat scripts/generate-backdrops.mjs).
+ * `grain` = butiran film di atas foto, menyamarkan resolusi rendah & banding.
+ * `backdrop-fade-y` = foto memudar ke atas/bawah agar menyatu dengan section putih di sekitarnya.
+ */
+@utility grain {
+  background-image: url('../assets/textures/grain.png');
+  background-size: 8rem;
+}
+@utility backdrop-fade-y {
+  mask-image: linear-gradient(to bottom, transparent 0%, black 30%, black 70%, transparent 100%);
 }
 
 /* Konten Markdown (legal, tata kelola, berita). */

@@ -49,7 +49,7 @@ export default function BusinessCard({ title, summary, image, index, href }: Bus
           </svg>
         )}
       </div>
-      <h3 className="mt-4 text-title font-normal tracking-tight">{title}</h3>
+      <h3 className="mt-4 text-title tracking-tight">{title}</h3>
       <p className="mt-3 leading-relaxed text-neutral-600">{summary}</p>
     </Tag>
   );

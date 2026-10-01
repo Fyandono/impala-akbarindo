@@ -41,7 +41,7 @@
     "heroLocation": "Bandung, Jawa Barat",
     "statsTitle": "Perusahaan dalam angka",
     "statsNote": "Berdasarkan portofolio kontrak dalam company profile perusahaan",
-    "heroCertified": "ISO 9001 · 14001 · 45001",
+    "heroCertified": "ISO 9001 · 14001 · 37001 · 45001",
     "heroEstablished": "Didirikan"
   },
   "about": {
@@ -157,9 +157,13 @@
   },
   "legality": {
     "title": "Legal, tersertifikasi, dan patuh regulasi",
-    "lead": "Perusahaan beroperasi dengan perizinan lengkap dan sistem manajemen bersertifikat. Salinan dokumen tersedia atas permintaan.",
+    "lead": "Perusahaan beroperasi dengan perizinan lengkap dan sistem manajemen bersertifikat. Sertifikat dapat dilihat langsung di halaman ini.",
     "certifications": "Sertifikasi",
-    "permits": "Perizinan"
+    "permits": "Perizinan",
+    "viewDocument": "Lihat dokumen",
+    "number": "No.",
+    "closePreview": "Tutup pratinjau",
+    "openFile": "Buka PDF"
   },
   "gallery": {
     "title": "Kegiatan kami di lapangan",

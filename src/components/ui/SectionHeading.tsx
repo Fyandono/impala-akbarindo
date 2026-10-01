@@ -41,7 +41,7 @@ export default function SectionHeading({
           {eyebrow}
         </Eyebrow>
       )}
-      <Tag id={id} className={cx('text-headline font-normal', dark && 'text-white')}>
+      <Tag id={id} className={cx('text-headline', dark && 'text-white')}>
         {title}
       </Tag>
       {lead && (

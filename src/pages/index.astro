@@ -3,6 +3,7 @@ import AboutIntro from '../components/sections/AboutIntro.tsx';
 import BusinessSection from '../components/sections/BusinessSection.tsx';
 import ContactForm from '../components/sections/ContactForm.astro';
 import ContactSection from '../components/sections/ContactSection.tsx';
+import DocumentPreview from '../components/sections/DocumentPreview.astro';
 import ExperienceSection from '../components/sections/ExperienceSection.tsx';
 import GallerySection from '../components/sections/GallerySection.tsx';
 import Hero from '../components/sections/Hero.tsx';
@@ -60,6 +61,7 @@ const [
   loadContact(),
 ]);
 const { form: contactForm, ...contactSection } = contact;
+const { preview: documentPreview, ...legalitySection } = legality;
 const heroMeta = [
   ...(site.foundingYear ? [`${home.heroEstablished} ${site.foundingYear}`] : []),
   home.heroLocation,
@@ -93,7 +95,8 @@ const heroMeta = [
 
   <ManagementSection id="management" index={sectionIndex('management')} {...management} />
 
-  <LegalitySection id="legality" index={sectionIndex('legality')} {...legality} />
+  <LegalitySection id="legality" index={sectionIndex('legality')} {...legalitySection} />
+  <DocumentPreview {...documentPreview} />
 
   {gallery && <GallerySection id="gallery" index={sectionIndex('gallery')} {...gallery} />}
 

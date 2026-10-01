@@ -21,7 +21,7 @@ export type HeroProps = {
 };
 
 /**
- * Hero homepage layar penuh, gaya arsitektural: garis kolom, judul display besar & ringan,
+ * Hero homepage layar penuh, gaya arsitektural: garis kolom, judul display besar & tebal,
  * garis rambut pemisah lead dan aksi. Satu per halaman — berisi `<h1>`.
  * Animasi masuk murni CSS (global.css: hero-word, hero-enter, hero-mark) — tidak menunggu JS.
  */
@@ -66,7 +66,7 @@ export default function Hero({
           </div>
 
           <div className="flex flex-1 flex-col justify-end pt-20">
-            <h1 className="max-w-6xl text-display font-light text-white">
+            <h1 className="max-w-6xl text-display text-white">
               {words.map((word, i) => (
                 <Fragment key={i}>
                   {i > 0 && ' '}

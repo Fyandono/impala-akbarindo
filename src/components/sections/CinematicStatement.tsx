@@ -30,7 +30,7 @@ export default function CinematicStatement({ eyebrow, statement, index }: Cinema
             </Eyebrow>
           </div>
           <blockquote
-            className="font-serif text-statement font-light text-balance text-white lg:col-span-9"
+            className="font-serif text-statement font-semibold text-balance text-white lg:col-span-9"
             data-reveal
           >
             <p>

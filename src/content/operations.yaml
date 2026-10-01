@@ -7,15 +7,15 @@
     - Menjamin petugas kebersihan yang disiplin dan taat pada aturan.
     - Memberi kesempatan personel mengikuti pelatihan BNSP dasar cleaning service.
   routines:
-    - frequency: Setiap pagi
+    - frequency: Awal shift
       description: Briefing dan pengarahan dari team leader sebelum pekerjaan dimulai.
-    - frequency: Setiap hari
+    - frequency: Harian
       description: Team leader mengontrol setiap gedung dan area tanggung jawab, lalu mencentang ceklis kegiatan petugas.
     - frequency: Dua kali seminggu
       description: Supervisor perusahaan berkunjung untuk evaluasi kerja dan menjaga hubungan baik dengan klien.
-    - frequency: Setiap bulan
+    - frequency: Bulanan
       description: Training dasar cleaning service oleh trainer PT Impala Akbarindo.
-    - frequency: Setiap dua bulan
+    - frequency: Dua bulanan
       description: Team building bersama trainer perusahaan.
 - id: keamanan
   order: 2
@@ -26,13 +26,13 @@
     - Menjamin anggota keamanan yang taat aturan dan disiplin dalam bekerja.
     - Memberi kesempatan anggota mengikuti pelatihan dasar Gada Pratama.
   routines:
-    - frequency: Setiap pagi
+    - frequency: Awal shift
       description: Apel pagi wajib untuk seluruh anggota keamanan.
-    - frequency: Setiap hari
+    - frequency: Harian
       description: Danru mengontrol area dan mencatat hasilnya di buku laporan yang telah disiapkan.
     - frequency: Dua kali seminggu
       description: Koordinator perusahaan berkunjung untuk koordinasi dengan klien dan pengarahan disiplin kepada anggota.
-    - frequency: Setiap bulan
+    - frequency: Bulanan
       description: Pelatihan dasar keamanan seperti peraturan baris-berbaris, senam tongkat, dan senam borgol.
-    - frequency: Setiap dua bulan
+    - frequency: Dua bulanan
       description: Team building bersama tim trainer perusahaan.

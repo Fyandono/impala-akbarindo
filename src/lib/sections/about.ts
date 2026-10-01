@@ -5,6 +5,7 @@ import type { ValueItem, ValuesGridProps } from '../../components/sections/Value
 import type { VisionMissionProps } from '../../components/sections/VisionMission';
 import { site } from '../../config/site';
 import { dict, lang } from '../../i18n';
+import { loadBackdrop } from './backdrops';
 import { byOrder, type SectionData } from './shared';
 
 export function mapValues(entries: Pick<CollectionEntry<'values'>, 'data'>[]): ValueItem[] {
@@ -28,12 +29,14 @@ export async function loadAbout() {
       note: home.statsNote,
       stats: [...site.stats],
       locale: lang,
+      backdrop: await loadBackdrop('stats'),
     } satisfies SectionData<StatsBandProps>,
     visionMission: {
       visionTitle: about.visionTitle,
       vision: about.vision,
       missionTitle: about.missionTitle,
       mission: about.mission,
+      backdrop: await loadBackdrop('vision'),
     } satisfies SectionData<VisionMissionProps>,
     values: {
       eyebrow: about.valuesEyebrow,

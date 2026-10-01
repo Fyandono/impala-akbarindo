@@ -1,3 +1,4 @@
+import type { ResponsiveImage } from '../types';
 import Eyebrow from '../ui/Eyebrow';
 import Section from '../ui/Section';
 
@@ -10,6 +11,8 @@ export type VisionMissionProps = {
   vision: string;
   missionTitle: string;
   mission: string[];
+  /** Foto latar dekoratif (redup di latar gelap). */
+  backdrop?: ResponsiveImage;
 };
 
 /** Section gelap: pernyataan visi besar di kiri, daftar misi bernomor di kanan. */
@@ -18,6 +21,7 @@ export default function VisionMission({
   vision,
   missionTitle,
   mission,
+  backdrop,
   id,
   titleId = `${id ?? 'vision'}-title`,
 }: VisionMissionProps) {
@@ -27,13 +31,14 @@ export default function VisionMission({
       spacing="compact"
       id={id}
       labelledBy={titleId}
+      backdrop={backdrop}
       containerClassName="grid gap-16 lg:grid-cols-2"
     >
       <div data-reveal>
         <Eyebrow as="h2" id={titleId} tone="dark">
           {visionTitle}
         </Eyebrow>
-        <p className="mt-6 text-statement font-medium text-white">{vision}</p>
+        <p className="mt-6 text-statement font-semibold text-white">{vision}</p>
       </div>
       <div data-reveal>
         <Eyebrow as="h2" tone="dark">

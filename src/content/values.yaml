@@ -17,7 +17,7 @@
 - id: tersertifikasi
   order: 5
   title: Tersertifikasi
-  description: Bersertifikat ISO 9001, ISO 14001, dan ISO 45001, dengan personel yang mengikuti uji kompetensi BNSP.
+  description: Bersertifikat ISO 9001, ISO 14001, ISO 37001, dan ISO 45001, dengan personel yang mengikuti uji kompetensi BNSP.
 - id: hasil-terkontrol
   order: 6
   title: Hasil yang terkontrol

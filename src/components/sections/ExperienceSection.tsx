@@ -107,7 +107,7 @@ export default function ExperienceSection({
         {total && (
           <dl className="mt-8 flex flex-col gap-2 sm:flex-row sm:items-baseline sm:justify-between">
             <dt className="text-eyebrow font-semibold text-accent-700 uppercase">{labels.total}</dt>
-            <dd className="font-serif text-title-lg font-light text-primary-900 tabular-nums">
+            <dd className="font-serif text-title-lg font-semibold text-primary-900 tabular-nums">
               {total}
             </dd>
           </dl>

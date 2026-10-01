@@ -36,7 +36,12 @@ for (const route of routes) {
       const hrefs = await page
         .locator('a[href^="/"]')
         .evaluateAll((links) => links.map((a) => a.getAttribute('href')!.split('#')[0]!));
-      const broken = [...new Set(hrefs)].filter((href) => href && !routeSet.has(href));
+      const unknown = [...new Set(hrefs)].filter((href) => href && !routeSet.has(href));
+      // Bukan halaman (mis. PDF di /dokumen/, gambar pratinjau): berkasnya harus benar-benar ada.
+      const broken: string[] = [];
+      for (const href of unknown) {
+        if (!(await page.request.get(href)).ok()) broken.push(href);
+      }
       expect(broken).toEqual([]);
     });
 

@@ -69,3 +69,22 @@ test('kontak: nomor seluler ke WhatsApp, form berlabel dan memvalidasi isian waj
   await expect(form.getByLabel(/Nama lengkap/)).toBeFocused();
   await expect(page).toHaveURL(/#contact$/);
 });
+
+test('legalitas: sertifikat bisa dipratinjau di dialog dan menautkan PDF-nya', async ({ page }) => {
+  await page.goto('/#legality');
+  const link = page.getByRole('link', { name: /Lihat dokumen\s*Sistem Manajemen Mutu/ });
+  await expect(link).toHaveAttribute('href', '/dokumen/iso-9001-2015.pdf');
+
+  await link.click();
+  const dialog = page.getByRole('dialog', { name: /ISO 9001:2015/ });
+  await expect(dialog).toBeVisible();
+  await expect(dialog.getByRole('img', { name: /ISO 9001:2015/ })).toBeVisible();
+  await expect(dialog.getByRole('link', { name: /Buka PDF/ })).toHaveAttribute(
+    'href',
+    '/dokumen/iso-9001-2015.pdf',
+  );
+
+  await page.keyboard.press('Escape');
+  await expect(dialog).toBeHidden();
+  await expect(link).toBeFocused();
+});

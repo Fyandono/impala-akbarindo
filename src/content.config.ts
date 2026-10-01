@@ -62,16 +62,27 @@ const projects = defineCollection({
   }),
 });
 
-/** Legalitas & sertifikasi. `code` mis. "ISO 9001:2015" (opsional). */
+/**
+ * Legalitas & sertifikasi. `code` mis. "ISO 9001:2015"; `number` = nomor dokumen/sertifikat;
+ * `preview` = pindaian dokumen (gambar di src/assets/legal/) untuk thumbnail & pratinjau;
+ * `file` = berkas PDF aslinya di public/dokumen/. Semua opsional.
+ */
 const credentials = defineCollection({
   loader: file('src/content/credentials.yaml'),
-  schema: z.object({
-    group: z.enum(['certification', 'permit']),
-    code: z.string().min(1).optional(),
-    title: text,
-    description: text,
-    order: z.number().int(),
-  }),
+  schema: ({ image }) =>
+    z.object({
+      group: z.enum(['certification', 'permit']),
+      code: z.string().min(1).optional(),
+      number: text.optional(),
+      preview: image().optional(),
+      file: z
+        .string()
+        .regex(/^\/dokumen\/[a-z0-9-]+\.pdf$/)
+        .optional(),
+      title: text,
+      description: text,
+      order: z.number().int(),
+    }),
 });
 
 /** Klien (nama + logo opsional di src/assets/clients/), dirujuk oleh `projects`. */

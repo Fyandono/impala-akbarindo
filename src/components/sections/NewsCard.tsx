@@ -36,7 +36,7 @@ export default function NewsCard({
       >
         {dateLabel}
       </time>
-      <h3 className="mt-4 text-title font-normal tracking-tight">
+      <h3 className="mt-4 text-title tracking-tight">
         {href ? (
           <a
             href={href}

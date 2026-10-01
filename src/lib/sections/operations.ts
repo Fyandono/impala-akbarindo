@@ -4,6 +4,7 @@ import type {
   OperationsSectionProps,
 } from '../../components/sections/OperationsSection';
 import { dict } from '../../i18n';
+import { loadBackdrop } from './backdrops';
 import { byOrder, type SectionData } from './shared';
 
 export function mapOperations(
@@ -25,5 +26,6 @@ export async function loadOperations(): Promise<SectionData<OperationsSectionPro
     goalsTitle: operations.goalsTitle,
     routinesTitle: operations.routinesTitle,
     tracks: mapOperations(await getCollection('operations')),
+    backdrop: await loadBackdrop('operations'),
   };
 }

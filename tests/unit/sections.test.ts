@@ -137,7 +137,7 @@ describe('experience', () => {
 describe('legality', () => {
   test('mapCredentials memfilter grup dan mengurutkan order', () => {
     const entries = [
-      { data: { group: 'permit', order: 1, title: 'NIB', description: 'n' } },
+      { data: { group: 'permit', order: 1, title: 'NIB', description: 'n', number: '123' } },
       {
         data: {
           group: 'certification',
@@ -162,7 +162,14 @@ describe('legality', () => {
       'ISO 45001',
     ]);
     expect(mapCredentials([...entries], 'permit')).toEqual([
-      { code: undefined, title: 'NIB', description: 'n' },
+      {
+        code: undefined,
+        number: '123',
+        title: 'NIB',
+        description: 'n',
+        preview: undefined,
+        fileHref: undefined,
+      },
     ]);
   });
 });

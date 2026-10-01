@@ -1,6 +1,8 @@
 import type { ReactNode } from 'react';
 import { cx } from '../cx';
+import type { ResponsiveImage } from '../types';
 import Container from './Container';
+import PhotoBackdrop from './PhotoBackdrop';
 
 export type SectionTone = 'light' | 'muted' | 'dark';
 export type SectionSpacing = 'default' | 'compact' | 'none';
@@ -22,6 +24,9 @@ export function sectionClasses(tone: SectionTone = 'light', spacing: SectionSpac
   return { section: tones[tone], container: spacings[spacing] };
 }
 
+/** Class wajib pada section yang memuat PhotoBackdrop. */
+export const backdropHostClass = 'relative isolate overflow-hidden';
+
 export type SectionProps = {
   children: ReactNode;
   /** Anchor untuk navigasi one-page, mis. "about". */
@@ -32,6 +37,8 @@ export type SectionProps = {
   tone?: SectionTone;
   /** Ritme vertikal dari token `--spacing-section*`. */
   spacing?: SectionSpacing;
+  /** Foto latar dekoratif (lihat PhotoBackdrop); perlakuannya mengikuti `tone`. */
+  backdrop?: ResponsiveImage;
   className?: string;
   /** Class tambahan untuk Container di dalamnya, mis. grid. */
   containerClassName?: string;
@@ -44,12 +51,18 @@ export default function Section({
   labelledBy,
   tone,
   spacing,
+  backdrop,
   className,
   containerClassName,
 }: SectionProps) {
   const classes = sectionClasses(tone, spacing);
   return (
-    <section id={id} aria-labelledby={labelledBy} className={cx(classes.section, className)}>
+    <section
+      id={id}
+      aria-labelledby={labelledBy}
+      className={cx(classes.section, backdrop && backdropHostClass, className)}
+    >
+      {backdrop && <PhotoBackdrop image={backdrop} tone={tone === 'dark' ? 'dark' : 'light'} />}
       <Container className={cx(classes.container, containerClassName)}>{children}</Container>
     </section>
   );

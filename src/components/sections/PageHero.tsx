@@ -45,9 +45,7 @@ export default function PageHero({ title, lead, breadcrumbs, breadcrumbLabel }: 
             ))}
           </ol>
         </nav>
-        <h1 className="hero-enter hero-enter-2 mt-8 max-w-5xl text-display font-light text-white">
-          {title}
-        </h1>
+        <h1 className="hero-enter hero-enter-2 mt-8 max-w-5xl text-display text-white">{title}</h1>
         {lead && (
           <p className="hero-enter hero-enter-3 mt-10 max-w-2xl border-t border-white/15 pt-8 text-lead text-primary-200">
             {lead}

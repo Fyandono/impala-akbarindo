@@ -29,6 +29,27 @@ Jalankan `npm run dev` untuk melihat perubahan secara langsung. Jika ada field y
 
 Foto layanan (kartu di section Layanan) saat ini berupa ilustrasi di `src/assets/illustrations/`. Untuk memakai foto: taruh di `src/assets/services/` (rasio 4:5, lebar ≥ 1200 px), lalu ubah `image` di `src/content/business/*.yaml`, mis. `image: ../../assets/services/kebersihan.jpg`.
 
+## Nomor & pindaian dokumen legalitas
+
+Di `src/content/credentials.yaml`, tiap entri boleh diberi tiga field opsional:
+
+- `number`: nomor dokumen/sertifikat, tampil di bawah deskripsi.
+- `preview`: gambar halaman dokumen (JPG/PNG/WebP, lebar ≥ 1400 px) di `src/assets/legal/`, mis. `preview: ../assets/legal/iso-9001-2015.jpg`. Menjadi thumbnail kartu sertifikat dan gambar pada pratinjau ("Lihat dokumen").
+- `file`: berkas PDF aslinya di `public/dokumen/` (nama huruf kecil dan tanda hubung), mis. `file: /dokumen/iso-9001-2015.pdf`. Tampil sebagai link "Buka PDF" di pratinjau.
+
+Satu PDF = satu dokumen: PDF berisi beberapa sertifikat dipecah per halaman dulu, dan tiap halaman diekspor juga sebagai gambar untuk `preview`.
+
+Tutupi dulu data yang tidak perlu dipublikasikan (NIK, alamat pribadi) sebelum mengunggah pindaian.
+
+## Latar foto section
+
+Beberapa section memakai foto dokumentasi sebagai tekstur latar (hitam-putih, redup, berbutir).
+
+1. Daftarkan foto sumber di `scripts/generate-backdrops.mjs` (objek `backdrops`), lalu jalankan `npm run backdrops`. Hasilnya tersimpan di `src/assets/backdrops/`.
+2. Petakan foto ke section di `src/lib/sections/backdrops.ts`. Hapus barisnya untuk mengembalikan section ke latar polos.
+
+Foto dengan area terang yang luas (langit, lantai) paling cocok; hindari foto yang wajahnya memenuhi bingkai.
+
 ## Logo klien
 
 Nama & logo klien ada di `src/content/clients.yaml`; logo di `src/assets/clients/` (PNG transparan atau SVG, tinggi ≥ 200 px), mis. `logo: ../assets/clients/bapenda.png`.
