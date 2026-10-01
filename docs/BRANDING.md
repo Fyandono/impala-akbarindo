@@ -39,7 +39,7 @@ Juga di blok `@theme` di `global.css` — ubah nilainya, jangan namanya:
 
 ## 4. Logo & ikon
 
-- **Logo header/footer:** ganti SVG di `src/components/ui/Logo.tsx`. Gunakan `currentColor` agar logo otomatis putih di atas hero gelap dan gelap saat header berlatar putih. Jika logo resmi multiwarna, siapkan dua versi (terang & gelap).
+- **Logo header/footer:** `src/components/ui/Logo.tsx` menyusun monogram (`BrandMark.tsx`) + wordmark (`Wordmark.tsx`, lettering logo yang di-trace jadi path SVG — bukan font); ganti path SVG di kedua file itu. Gunakan `currentColor` agar logo otomatis putih di atas hero gelap dan gelap saat header berlatar putih. Jika logo resmi multiwarna, siapkan dua versi (terang & gelap).
 - **Favicon:** ganti `public/favicon.svg`.
 - **Apple touch icon & OG image:** jalankan `npm run images -- "Nama Singkat"`, atau ganti langsung `public/apple-touch-icon.png` (180×180) dan `src/assets/og-default.jpg` (1200×630).
 
