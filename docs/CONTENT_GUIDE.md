@@ -43,12 +43,12 @@ Tutupi dulu data yang tidak perlu dipublikasikan (NIK, alamat pribadi) sebelum m
 
 ## Latar foto section
 
-Beberapa section memakai foto dokumentasi sebagai tekstur latar (hitam-putih, redup, berbutir).
+Beberapa section gelap memakai foto dokumentasi berwarna sebagai latar, ditimpa gradasi arang agar teks tetap terbaca.
 
 1. Daftarkan foto sumber di `scripts/generate-backdrops.mjs` (objek `backdrops`), lalu jalankan `npm run backdrops`. Hasilnya tersimpan di `src/assets/backdrops/`.
 2. Petakan foto ke section di `src/lib/sections/backdrops.ts`. Hapus barisnya untuk mengembalikan section ke latar polos.
 
-Foto dengan area terang yang luas (langit, lantai) paling cocok; hindari foto yang wajahnya memenuhi bingkai.
+Pilih foto yang tajam dengan banyak orang/aktivitas dan warna seragam yang jelas; hindari foto yang wajahnya memenuhi bingkai atau yang didominasi langit putih.
 
 ## Logo klien
 

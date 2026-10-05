@@ -29,7 +29,6 @@ export async function loadAbout() {
       note: home.statsNote,
       stats: [...site.stats],
       locale: lang,
-      backdrop: await loadBackdrop('stats'),
     } satisfies SectionData<StatsBandProps>,
     visionMission: {
       visionTitle: about.visionTitle,

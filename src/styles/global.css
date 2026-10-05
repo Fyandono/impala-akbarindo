@@ -472,13 +472,8 @@
 
 /*
  * Latar foto section (komponen PhotoBackdrop; foto dibuat scripts/generate-backdrops.mjs).
- * `grain` = butiran film di atas foto, menyamarkan resolusi rendah & banding.
  * `backdrop-fade-y` = foto memudar ke atas/bawah agar menyatu dengan section putih di sekitarnya.
  */
-@utility grain {
-  background-image: url('../assets/textures/grain.png');
-  background-size: 8rem;
-}
 @utility backdrop-fade-y {
   mask-image: linear-gradient(to bottom, transparent 0%, black 30%, black 70%, transparent 100%);
 }
